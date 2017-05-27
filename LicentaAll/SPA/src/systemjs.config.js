@@ -22,6 +22,8 @@
       '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+      'auth0-js': 'npm:auth0-js/build/auth0.js',
+      'bootstrap': 'npm:bootstrap/dist/js/bootstrap.js',
 
       // other libraries
       'rxjs':                      'npm:rxjs',
