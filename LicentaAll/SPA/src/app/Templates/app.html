@@ -4,22 +4,21 @@
             <div class="navbar-header">
                 <a class='navbar-brand'>{{PageTitle}}</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div id="navbar" class="navbar-collapse collapse">
                 <ul class='nav navbar-nav'>
                     <li><a>Home</a></li>
                     <li><a>Products</a></li>
                     <li><a>About</a></li>
                 </ul>
                 <ul class='nav navbar-nav navbar-right'>
-                    <li class="btn btn-primary btn-margin" *ngIf="!AuthService.isAuthenticated()" (click)="AuthService.login()">
-                            Log In
-                    </li>
-                    <li class="btn btn-primary btn-margin" *ngIf="AuthService.isAuthenticated()" (click)="AuthService.logout()">
-                            Log Out
-                    </li>
+                    <li><a *ngIf="!IsAuthenticated()" (click)="Login()">Log In</a></li>
+                    <li><a *ngIf="IsAuthenticated()">Welcome, {{GetProfileName()}}</a></li>
+                    <li><a *ngIf="IsAuthenticated()" (click)="Logout()">Log Out</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
+    <div>
+        <router-outlet></router-outlet>
+    </div>
 </div>

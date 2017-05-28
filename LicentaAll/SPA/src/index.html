@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
-
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
 
@@ -20,6 +19,15 @@
   </head>
 
   <body>
-    <my-app>Loading AppComponent content here ...</my-app>
+    <my-app>
+        <div class="center-div">
+            <div class="row">
+                <div class="col-12 text-center"><i class='fa fa-gear fa-spin size-big'></i></div>
+            </div>
+            <div class="row">
+                <p class="col-12 text-center size-medium">Loading</p>
+            </div>
+        </div>
+    </my-app>
   </body>
 </html>

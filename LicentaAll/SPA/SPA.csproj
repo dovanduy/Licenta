@@ -70,6 +70,8 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="src\app\Templates\app.html" />
+    <Content Include="src\app\Templates\auth0callback.html" />
+    <Content Include="src\app\Templates\welcome.html" />
     <Content Include="src\tsconfig.json" />
     <Content Include="package.json" />
     <None Include="Web.Debug.config">
@@ -91,6 +93,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\Components\app.component.ts" />
+    <TypeScriptCompile Include="src\app\Components\authZeroCallback.component.ts" />
+    <TypeScriptCompile Include="src\app\Components\welcome.component.ts" />
     <TypeScriptCompile Include="src\app\Services\AuthService.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
