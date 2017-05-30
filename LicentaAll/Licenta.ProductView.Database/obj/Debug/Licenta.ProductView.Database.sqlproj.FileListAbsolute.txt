@@ -1,0 +1,14 @@
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Licenta.ProductView.Database.dacpac
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Licenta.ProductView.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Licenta.ProductView.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\Model.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\refactor.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\postdeploy.sql
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\predeploy.sql
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\Licenta.ProductView.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\Licenta.ProductView.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.Database\bin\Debug\Licenta.ProductView.Database.dacpac
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.Database\bin\Debug\Licenta.ProductView.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.Database\bin\Debug\Licenta.ProductView.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.Database\obj\Debug\Licenta.ProductView.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.Database\obj\Debug\Licenta.ProductView.pdb

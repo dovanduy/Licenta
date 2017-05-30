@@ -1,0 +1,5 @@
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\bin\Debug\Licenta.Products.Database.dacpac
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\bin\Debug\Licenta.Products.Database.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\bin\Debug\Licenta.Products.Database.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\obj\Debug\Licenta.Products.Database.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\obj\Debug\Licenta.Products.Database.pdb

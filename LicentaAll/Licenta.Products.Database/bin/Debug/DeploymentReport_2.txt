@@ -1,0 +1,25 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[AditionalDetails]
+       [dbo].[Products]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[Products] (Default Constraint)
+     Table rebuild
+       [dbo].[AditionalDetails] (Table)
+       [dbo].[Products] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_AditionalDetails_Products] (Foreign Key)
+       [dbo].[FK_Product_Category] (Foreign Key)
+     Create
+       [dbo].[FK_AditionalDetails_Products] (Foreign Key)
+       [dbo].[FK_Product_Category] (Foreign Key)

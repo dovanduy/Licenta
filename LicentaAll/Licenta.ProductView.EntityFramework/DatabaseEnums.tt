@@ -1,0 +1,98 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ import namespace="System.Data.SqlClient" #> 
+<#@ output extension="\\" #> 
+<#
+
+///////////////////////TEMPLATE PARAMETES////////////////////////////////////
+//Database connection string
+var connectionString = "Data Source=STEFAN-LT\\SQLEXPRESS;Initial Catalog=LicentaProductView;Integrated Security=True";
+
+var enumDescriptionColumnName = "Name";
+
+//Enum namespace
+var enumNameSpace = "Licenta.ProductView.EntityFramework.Enumerations";
+
+////////////////////////////////////////////////////////////////////////////
+
+
+var fileManager = EntityFrameworkTemplateFileManager.Create(this);
+var codeGenerationTools = new CodeGenerationTools(this);
+
+//Open ADO connection
+var connection = new SqlConnection(connectionString);
+var command = connection.CreateCommand();
+connection.Open();
+
+command.CommandText = @"SELECT DISTINCT t.NAME 
+						FROM SYS.tables as t
+						WHERE t.NAME LIKE '%Lookup%'";
+var tableReader = command.ExecuteReader();
+var enumTables = new List<string>();
+while (tableReader.Read())
+{
+	enumTables.Add(tableReader["NAME"].ToString());
+}
+connection.Close();
+
+foreach (var tableName in enumTables)
+{
+	connection.Open();
+	
+	//Get the enum name
+	var enumName = ConvertCaseString(tableName.Replace("Lookup",""));
+	fileManager.StartNewFile(enumName + "Enum.cs");
+
+//Start write enum file:		
+#>
+namespace <#=enumNameSpace#>
+{
+	public enum <#=tableName.Replace("Lookup","")#>Enum
+	{
+	<#
+	command.CommandText = string.Format("SELECT * FROM {0}",codeGenerationTools.Escape(tableName));
+    var columnReader = command.ExecuteReader();
+    while (columnReader.Read())
+    {
+		//Fill only the values that the field "enumDescriptionColumnName" have value
+		if(!string.IsNullOrEmpty(columnReader[enumDescriptionColumnName].ToString().Trim()))
+		{
+	#>	<#=columnReader[enumDescriptionColumnName].ToString()#> = <#=columnReader[tableName.Replace("Lookup","") + "Id"].ToString()#>,
+	<#	}
+	}#>
+}
+}
+<#
+	connection.Close();
+	
+}
+	fileManager.Process();
+#>
+
+<#+
+		/// <summary>
+        /// Converts the phrase to specified convention.
+        /// </summary>
+        /// <param name="phrase"></param>
+        /// <param name="cases">The cases.</param>
+        /// <returns>string</returns>
+        public static string ConvertCaseString(string phrase)
+        {
+            phrase = phrase.ToLower().Replace("_", " ");
+            string[] splittedPhrase = phrase.Split(' ', '-', '.');
+            var sb = new StringBuilder();
+
+            sb = new StringBuilder();
+
+            foreach (String s in splittedPhrase)
+            {
+                char[] splittedPhraseChars = s.ToCharArray();
+                if (splittedPhraseChars.Length > 0)
+                {
+                    splittedPhraseChars[0] = ((new String(splittedPhraseChars[0], 1)).ToUpper().ToCharArray())[0];
+                }
+                sb.Append(new String(splittedPhraseChars));
+            }
+            return sb.ToString();
+        }
+#>

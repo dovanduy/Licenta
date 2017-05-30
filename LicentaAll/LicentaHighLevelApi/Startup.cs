@@ -15,9 +15,11 @@ namespace LicentaHighLevelApi
             var config = new HttpConfiguration();
 
             WebApiConfig.Register(config);
+            SwaggerConfig.Register(config);
+            DependencyConfig.Register(config);
 
             ConfigureAuthZero(app);
-
+            
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
         }

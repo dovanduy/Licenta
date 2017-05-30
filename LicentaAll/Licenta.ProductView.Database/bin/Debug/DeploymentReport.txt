@@ -1,0 +1,32 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Products]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[Products].[CategoryId] on table [dbo].[Products] must be added, but the column has no default value
+         and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The column [dbo].[Products].[Name] on table [dbo].[Products] must be added, but the column has no default value and does
+         not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either:
+         add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a
+         deployment option.
+
+** User actions
+     Table rebuild
+       [dbo].[Products] (Table)
+     Create
+       [dbo].[AditionalDetails] (Table)
+       [dbo].[CategoryLookup] (Table)
+       [dbo].[FK_Product_Category] (Foreign Key)
+       [dbo].[FK_AditionalDetails_Products] (Foreign Key)
+
+** Supporting actions
+
+The column [dbo].[Products].[CategoryId] on table [dbo].[Products] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Products].[Name] on table [dbo].[Products] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column ProductId on table [dbo].[Products] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

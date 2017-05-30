@@ -1,0 +1,5 @@
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ViewContracts\bin\Debug\Licenta.ViewContracts.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ViewContracts\bin\Debug\Licenta.ViewContracts.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ViewContracts\obj\Debug\Licenta.ViewContracts.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ViewContracts\obj\Debug\Licenta.ViewContracts.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ViewContracts\obj\Debug\Licenta.ViewContracts.pdb
