@@ -1,4 +1,5 @@
 ﻿using Licenta.Messaging.Messages;
+using Licenta.Messaging.Messages.Events;
 using Licenta.Products.Messages;
 using MassTransit;
 using System;
@@ -38,14 +39,14 @@ namespace Licenta.Products.Consumers
                 await context.Publish(MapProductAddedToMessaje(addedProduct));
 
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                await Console.Out.WriteLineAsync("Event published: ProductAddedEvent");
-                Console.ForegroundColor = ConsoleColor.White;
+                await Console.Out.WriteLineAsync("Event published: ProductUpdatedEvent");
+                Console.ForegroundColor = ConsoleColor.Gray;
             }
         }
 
-        private IProductAddedEvent MapProductAddedToMessaje(Product addedProduct)
+        private IProductUpdatedEvent MapProductAddedToMessaje(Product addedProduct)
         {
-            return new ProductAddedEvent
+            return new ProductUpdatedEvent
             {
                 Product = new Messaging.Model.Product
                 {

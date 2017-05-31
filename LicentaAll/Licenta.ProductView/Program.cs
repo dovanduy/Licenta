@@ -1,4 +1,5 @@
-﻿using Licenta.Messaging;
+﻿using GreenPipes;
+using Licenta.Messaging;
 using Licenta.ProductView.Consumers;
 using MassTransit;
 using System;
@@ -18,6 +19,7 @@ namespace Licenta.ProductView
             var bus = BusConfigurator.ConfigureBus((cfg, host) => {
                 cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductServiceQueue,
                     e => {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(20); });
                         e.Consumer<ProductAddedEventConsumer>();
                     });
             });

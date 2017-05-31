@@ -5,6 +5,7 @@
     [CategoryId]  INT            NOT NULL, 
     [Inventory] INT NOT NULL DEFAULT 0,
     [Price] MONEY NULL, 
-    CONSTRAINT [FK_Product_Category] FOREIGN KEY ([CategoryId]) REFERENCES [CategoryLookup]([CategoryId])
+    [Row_Version] INT NOT NULL DEFAULT 1, 
+    CONSTRAINT [FK_Product_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Category]([CategoryId])
 );
 

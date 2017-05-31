@@ -10,6 +10,7 @@ namespace Licenta.Messaging.Model
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
         public int Inventory { get; set; }
+        public int RowVersion { get; set; }
         public IList<AditionalDetail> AditionalDetails { get; set; }
     }
 }

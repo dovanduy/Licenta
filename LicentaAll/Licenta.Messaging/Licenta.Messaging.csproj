@@ -42,6 +42,22 @@
       <HintPath>..\packages\MassTransit.RabbitMQ.3.5.7\lib\net452\MassTransit.RabbitMqTransport.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NewId, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
       <HintPath>..\packages\NewId.3.0.0\lib\net452\NewId.dll</HintPath>
       <Private>True</Private>
@@ -65,13 +81,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusConfigurator.cs" />
+    <Compile Include="ContainerConfigurator.cs" />
+    <Compile Include="Messages\Commands\IDeleteCategoryCommand.cs" />
+    <Compile Include="Messages\Commands\IUpdateCategoryCommand.cs" />
+    <Compile Include="Messages\Commands\IAddCategoryCommand.cs" />
     <Compile Include="Messages\Commands\IAddProductCommand.cs" />
     <Compile Include="Messages\Commands\IDeleteProductCommand.cs" />
     <Compile Include="Messages\Commands\IUpdateProductCommand.cs" />
+    <Compile Include="Messages\Events\ICategoryUpdatedEvent.cs" />
+    <Compile Include="Messages\Events\ICategoryDeletedEvent.cs" />
+    <Compile Include="Messages\Events\IProductInventoryUpdatedEvent.cs" />
+    <Compile Include="Messages\Events\IProductPriceUpdatedEvent.cs" />
     <Compile Include="Messages\Events\IProductAddedEvent.cs" />
     <Compile Include="Messages\Events\IProductDeletedEvent.cs" />
     <Compile Include="Messages\Events\IProductUpdatedEvent.cs" />
     <Compile Include="Model\AditionalDetail.cs" />
+    <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="RabbitMqConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,4 +10,4 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-:r .\Lookup\CategoryLookup.sql
+/* :r .\Lookup\CategoryLookup.sql */

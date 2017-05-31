@@ -14,26 +14,44 @@ namespace Licenta.ProductView.Consumers
         {
             using (ProductViewDbContext unitOfWork = new ProductViewDbContext())
             {
-                var productToEdit = context.Message.Product;
+                var productInQuestion = context.Message.Product;
 
-                var aditionalDetails = productToEdit.AditionalDetails.Select(x => new AditionalDetail
+                var aditionalDetails = productInQuestion.AditionalDetails.Select(x => new AditionalDetail
                 {
                     AditionalDetailId = x.AditionalDetailId,
+                    ProductId = productInQuestion.ProductId,
                     Name = x.Name,
                     Text = x.Text
                 }).ToList();
 
-                var editedProduct = unitOfWork.Products.First(x => x.ProductId == productToEdit.ProductId);
+                if(unitOfWork.Products.Any(x => x.ProductId == productInQuestion.ProductId))
+                {
+                    var editedProduct = unitOfWork.Products.First(x => x.ProductId == productInQuestion.ProductId);
 
-                unitOfWork.Products.Attach(editedProduct);
+                    unitOfWork.Products.Attach(editedProduct);
 
-                editedProduct.Name = productToEdit.Name;
-                editedProduct.Description = productToEdit.Description;
-                editedProduct.CategoryId = (CategoryEnum)productToEdit.CategoryId;
-                editedProduct.AditionalDetails = aditionalDetails;
+                    editedProduct.Name = productInQuestion.Name;
+                    editedProduct.Description = productInQuestion.Description;
+                    editedProduct.CategoryId = (CategoryEnum)productInQuestion.CategoryId;
+                    editedProduct.AditionalDetails = aditionalDetails;
 
-                await unitOfWork.SaveChangesAsync();
-                await Console.Out.WriteLineAsync($"Product {editedProduct.ProductId} was updated.");
+                    await unitOfWork.SaveChangesAsync();
+                    await Console.Out.WriteLineAsync($"Product {productInQuestion.ProductId} was updated.");
+                }
+                else
+                {
+                    unitOfWork.Products.Add(new Product
+                    {
+                        ProductId = productInQuestion.ProductId,
+                        CategoryId = (CategoryEnum)productInQuestion.CategoryId,
+                        Description = productInQuestion.Description,
+                        Name = productInQuestion.Name,
+                        AditionalDetails = aditionalDetails
+                    });
+
+                    await unitOfWork.SaveChangesAsync();
+                    await Console.Out.WriteLineAsync($"Product {productInQuestion.ProductId} was added.");
+                }
             }
         }
     }
