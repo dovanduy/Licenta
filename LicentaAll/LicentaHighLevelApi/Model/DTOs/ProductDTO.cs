@@ -11,9 +11,10 @@ namespace LicentaHighLevelApi.Model.DTOs
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
         public int Inventory { get; set; }
+        public int Version { get; set; }
         public IList<AditionalDetailDTO> AditionalDetails { get; set; }
 
-        public static Licenta.Messaging.Model.Product MapToProductMessage(ProductDTO productDto)
+        public static Licenta.Messaging.Model.Product MapToProductBusContract(ProductDTO productDto)
         {
             return new Licenta.Messaging.Model.Product
             {
@@ -23,6 +24,7 @@ namespace LicentaHighLevelApi.Model.DTOs
                 Price = productDto.Price,
                 CategoryId = productDto.CategoryId,
                 Inventory = productDto.Inventory,
+                RowVersion = productDto.Version,
                 AditionalDetails = productDto.AditionalDetails.Select(x => new Licenta.Messaging.Model.AditionalDetail
                 {
                     AditionalDetailId = x.AditionalDetailId,

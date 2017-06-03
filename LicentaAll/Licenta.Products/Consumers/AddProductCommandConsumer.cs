@@ -1,4 +1,4 @@
-﻿using Licenta.Messaging.Messages;
+﻿using Licenta.Messaging.Messages.Commands;
 using Licenta.Messaging.Messages.Events;
 using Licenta.Products.Messages;
 using MassTransit;
@@ -15,7 +15,7 @@ namespace Licenta.Products.Consumers
             using (ProductsDbContext unitOfWork = new ProductsDbContext())
             {
                 var productToAdd = context.Message.Product;
-
+                await Console.Out.WriteLineAsync("Product add command recieved.");
                 var aditionalDetails = productToAdd.AditionalDetails.Select(x => new AditionalDetail
                 {
                     AditionalDetailId = x.AditionalDetailId,
@@ -25,7 +25,7 @@ namespace Licenta.Products.Consumers
 
                 var addedProduct = new Product
                 {
-                    CategoryId = (Enumerations.CategoryEnum)productToAdd.CategoryId,
+                    CategoryId = productToAdd.CategoryId,
                     Description = productToAdd.Description,
                     Name = productToAdd.Name,
                     AditionalDetails = aditionalDetails
@@ -36,7 +36,7 @@ namespace Licenta.Products.Consumers
                 await unitOfWork.SaveChangesAsync();
                 await Console.Out.WriteLineAsync($"Product {addedProduct.ProductId} was added.");
 
-                await context.Publish(MapProductAddedToMessaje(addedProduct));
+                await context.Publish(MapProductAddedToMessaje(addedProduct,productToAdd));
 
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 await Console.Out.WriteLineAsync("Event published: ProductUpdatedEvent");
@@ -44,7 +44,7 @@ namespace Licenta.Products.Consumers
             }
         }
 
-        private IProductUpdatedEvent MapProductAddedToMessaje(Product addedProduct)
+        private IProductUpdatedEvent MapProductAddedToMessaje(Product addedProduct, Messaging.Model.Product extraInformation)
         {
             return new ProductUpdatedEvent
             {
@@ -54,6 +54,8 @@ namespace Licenta.Products.Consumers
                     CategoryId = (int)addedProduct.CategoryId,
                     Description = addedProduct.Description,
                     Name = addedProduct.Name,
+                    Price = extraInformation.Price,
+                    Inventory = extraInformation.Inventory,
                     AditionalDetails = addedProduct.AditionalDetails.Select(x => new Messaging.Model.AditionalDetail
                     {
                         AditionalDetailId = x.AditionalDetailId,

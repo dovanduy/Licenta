@@ -36,7 +36,7 @@ namespace Licenta.Products
     public interface IProductsDbContext : System.IDisposable
     {
         System.Data.Entity.DbSet<AditionalDetail> AditionalDetails { get; set; } // AditionalDetails
-        System.Data.Entity.DbSet<Category> Categories { get; set; } // CategoryLookup
+        System.Data.Entity.DbSet<Category> Categories { get; set; } // Category
         System.Data.Entity.DbSet<Product> Products { get; set; } // Products
         System.Data.Entity.DbSet<RefactorLog> RefactorLogs { get; set; } // __RefactorLog
 
@@ -53,7 +53,7 @@ namespace Licenta.Products
     public class ProductsDbContext : System.Data.Entity.DbContext, IProductsDbContext
     {
         public System.Data.Entity.DbSet<AditionalDetail> AditionalDetails { get; set; } // AditionalDetails
-        public System.Data.Entity.DbSet<Category> Categories { get; set; } // CategoryLookup
+        public System.Data.Entity.DbSet<Category> Categories { get; set; } // Category
         public System.Data.Entity.DbSet<Product> Products { get; set; } // Products
         public System.Data.Entity.DbSet<RefactorLog> RefactorLogs { get; set; } // __RefactorLog
 
@@ -433,24 +433,30 @@ namespace Licenta.Products
         public int ProductId { get; set; } // ProductId
         public string Name { get; set; } // Name (length: 50)
         public string Text { get; set; } // Text (length: 5000)
+        public System.DateTime? DateDeleted { get; set; } // Date_Deleted
 
         // Foreign keys
         [JsonIgnore]
         public virtual Product Product { get; set; } // FK_AditionalDetails_Products
     }
 
-    // CategoryLookup
+    // Category
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
     public class Category
     {
-        public Enumerations.CategoryEnum CategoryId { get; set; } // CategoryId (Primary key)
+        public int CategoryId { get; set; } // CategoryId (Primary key)
         public string Name { get; set; } // Name (length: 50)
+        public bool Visible { get; set; } // Visible
+        public int RowVersion { get; set; } // Row_Version
+        public System.DateTime? DateDeleted { get; set; } // Date_Deleted
 
         // Reverse navigation
         public virtual System.Collections.Generic.ICollection<Product> Products { get; set; } // Products.FK_Product_Category
 
         public Category()
         {
+            Visible = false;
+            RowVersion = 1;
             Products = new System.Collections.Generic.List<Product>();
         }
     }
@@ -462,8 +468,9 @@ namespace Licenta.Products
         public int ProductId { get; set; } // ProductId (Primary key)
         public string Name { get; set; } // Name (length: 400)
         public string Description { get; set; } // Description (length: 5000)
-        public Enumerations.CategoryEnum CategoryId { get; set; } // CategoryId
-        public int Inventory { get; set; } // Inventory
+        public int CategoryId { get; set; } // CategoryId
+        public int RowVersion { get; set; } // Row_Version
+        public System.DateTime? DateDeleted { get; set; } // Date_Deleted
 
         // Reverse navigation
         public virtual System.Collections.Generic.ICollection<AditionalDetail> AditionalDetails { get; set; } // AditionalDetails.FK_AditionalDetails_Products
@@ -474,7 +481,7 @@ namespace Licenta.Products
 
         public Product()
         {
-            Inventory = 0;
+            RowVersion = 1;
             AditionalDetails = new System.Collections.Generic.List<AditionalDetail>();
         }
     }
@@ -508,13 +515,14 @@ namespace Licenta.Products
             Property(x => x.ProductId).HasColumnName(@"ProductId").IsRequired().HasColumnType("int");
             Property(x => x.Name).HasColumnName(@"Name").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(50);
             Property(x => x.Text).HasColumnName(@"Text").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(5000);
+            Property(x => x.DateDeleted).HasColumnName(@"Date_Deleted").IsOptional().HasColumnType("date");
 
             // Foreign keys
             HasRequired(a => a.Product).WithMany(b => b.AditionalDetails).HasForeignKey(c => c.ProductId).WillCascadeOnDelete(false); // FK_AditionalDetails_Products
         }
     }
 
-    // CategoryLookup
+    // Category
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
     public class CategoryConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Category>
     {
@@ -525,11 +533,14 @@ namespace Licenta.Products
 
         public CategoryConfiguration(string schema)
         {
-            ToTable("CategoryLookup", schema);
+            ToTable("Category", schema);
             HasKey(x => x.CategoryId);
 
-            Property(x => x.CategoryId).HasColumnName(@"CategoryId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.CategoryId).HasColumnName(@"CategoryId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.Name).HasColumnName(@"Name").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(50);
+            Property(x => x.Visible).HasColumnName(@"Visible").IsRequired().HasColumnType("bit");
+            Property(x => x.RowVersion).HasColumnName(@"Row_Version").IsRequired().HasColumnType("int");
+            Property(x => x.DateDeleted).HasColumnName(@"Date_Deleted").IsOptional().HasColumnType("date");
         }
     }
 
@@ -551,7 +562,8 @@ namespace Licenta.Products
             Property(x => x.Name).HasColumnName(@"Name").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(400);
             Property(x => x.Description).HasColumnName(@"Description").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(5000);
             Property(x => x.CategoryId).HasColumnName(@"CategoryId").IsRequired().HasColumnType("int");
-            Property(x => x.Inventory).HasColumnName(@"Inventory").IsRequired().HasColumnType("int");
+            Property(x => x.RowVersion).HasColumnName(@"Row_Version").IsRequired().HasColumnType("int");
+            Property(x => x.DateDeleted).HasColumnName(@"Date_Deleted").IsOptional().HasColumnType("date");
 
             // Foreign keys
             HasRequired(a => a.Category).WithMany(b => b.Products).HasForeignKey(c => c.CategoryId).WillCascadeOnDelete(false); // FK_Product_Category

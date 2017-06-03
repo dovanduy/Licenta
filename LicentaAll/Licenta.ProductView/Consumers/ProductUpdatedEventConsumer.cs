@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Licenta.Messaging.Messages.Events;
 using MassTransit;
-using Licenta.ProductView.EntityFramework.Enumerations;
 using Licenta.ProductView.EntityFramework;
 using System.Linq;
 
@@ -24,7 +23,9 @@ namespace Licenta.ProductView.Consumers
                     Text = x.Text
                 }).ToList();
 
-                if(unitOfWork.Products.Any(x => x.ProductId == productInQuestion.ProductId))
+                await Console.Out.WriteLineAsync($"Product updated event recieved for product {productInQuestion.ProductId}.");
+
+                if (unitOfWork.Products.Any(x => x.ProductId == productInQuestion.ProductId))
                 {
                     var editedProduct = unitOfWork.Products.First(x => x.ProductId == productInQuestion.ProductId);
 
@@ -32,7 +33,7 @@ namespace Licenta.ProductView.Consumers
 
                     editedProduct.Name = productInQuestion.Name;
                     editedProduct.Description = productInQuestion.Description;
-                    editedProduct.CategoryId = (CategoryEnum)productInQuestion.CategoryId;
+                    editedProduct.CategoryId = productInQuestion.CategoryId;
                     editedProduct.AditionalDetails = aditionalDetails;
 
                     await unitOfWork.SaveChangesAsync();
@@ -43,7 +44,7 @@ namespace Licenta.ProductView.Consumers
                     unitOfWork.Products.Add(new Product
                     {
                         ProductId = productInQuestion.ProductId,
-                        CategoryId = (CategoryEnum)productInQuestion.CategoryId,
+                        CategoryId = productInQuestion.CategoryId,
                         Description = productInQuestion.Description,
                         Name = productInQuestion.Name,
                         AditionalDetails = aditionalDetails

@@ -4,6 +4,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Owin;
 using System.Web.Http;
+using LicentaHighLevelApi.DependencyInjection;
 
 [assembly: OwinStartup(typeof(Startup))]
 namespace LicentaHighLevelApi

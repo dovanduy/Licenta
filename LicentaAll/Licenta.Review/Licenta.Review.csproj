@@ -76,12 +76,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consumers\AddReviewCommandConsumer.cs" />
+    <Compile Include="Consumers\DeleteReviewCommandConsumer.cs" />
+    <Compile Include="Consumers\ProductDeletedEventConsumer.cs" />
+    <Compile Include="Consumers\UpdateReviewCommandConsumer.cs" />
+    <Compile Include="Messages\ProductRatingUpdatedEvent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Licenta.Messaging\Licenta.Messaging.csproj">
+      <Project>{81967D1C-97A5-441A-BC94-C669A05C1AA8}</Project>
+      <Name>Licenta.Messaging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Licenta.Review.EntityFramework\Licenta.Review.EntityFramework.csproj">
+      <Project>{8d1c6005-9ee0-4b04-976d-cc29660bbfd7}</Project>
+      <Name>Licenta.Review.EntityFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

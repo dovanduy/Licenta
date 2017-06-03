@@ -76,7 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Consumers\ProductAddedEventConsumer.cs" />
+    <Compile Include="Consumers\CategoryDeletedEventConsumer.cs" />
+    <Compile Include="Consumers\CategoryUpdatedEventConsumer.cs" />
+    <Compile Include="Consumers\ProductDeletedEventConsumer.cs" />
+    <Compile Include="Consumers\ProductInventoryUpdatedEventConsumer.cs" />
+    <Compile Include="Consumers\ProductPriceUpdatedEventConsumer.cs" />
+    <Compile Include="Consumers\ProductRatingUpdatedEventConsumer.cs" />
     <Compile Include="Consumers\ProductUpdatedEventConsumer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -82,22 +82,27 @@
   <ItemGroup>
     <Compile Include="BusConfigurator.cs" />
     <Compile Include="ContainerConfigurator.cs" />
+    <Compile Include="Messages\Commands\IAddReviewCommand.cs" />
     <Compile Include="Messages\Commands\IDeleteCategoryCommand.cs" />
+    <Compile Include="Messages\Commands\IDeleteReviewCommand.cs" />
     <Compile Include="Messages\Commands\IUpdateCategoryCommand.cs" />
     <Compile Include="Messages\Commands\IAddCategoryCommand.cs" />
     <Compile Include="Messages\Commands\IAddProductCommand.cs" />
     <Compile Include="Messages\Commands\IDeleteProductCommand.cs" />
     <Compile Include="Messages\Commands\IUpdateProductCommand.cs" />
+    <Compile Include="Messages\Commands\IUpdateReviewCommand.cs" />
     <Compile Include="Messages\Events\ICategoryUpdatedEvent.cs" />
     <Compile Include="Messages\Events\ICategoryDeletedEvent.cs" />
     <Compile Include="Messages\Events\IProductInventoryUpdatedEvent.cs" />
     <Compile Include="Messages\Events\IProductPriceUpdatedEvent.cs" />
-    <Compile Include="Messages\Events\IProductAddedEvent.cs" />
     <Compile Include="Messages\Events\IProductDeletedEvent.cs" />
+    <Compile Include="Messages\Events\IProductRatingUpdatedEvent.cs" />
+    <Compile Include="Messages\Events\IProductStockStatusChangedEvent.cs" />
     <Compile Include="Messages\Events\IProductUpdatedEvent.cs" />
     <Compile Include="Model\AditionalDetail.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\Review.cs" />
     <Compile Include="RabbitMqConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

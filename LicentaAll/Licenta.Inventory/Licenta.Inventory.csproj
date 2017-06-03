@@ -77,11 +77,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consumers\ProductUpdatedEventConsumer.cs" />
     <Compile Include="Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Messages\ProductInventoryUpdatedEvent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

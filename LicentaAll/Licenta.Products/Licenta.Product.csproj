@@ -77,17 +77,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryEnum.cs">
-      <DependentUpon>DatabaseEnums.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Consumers\AddCategoryCommandConsumer.cs" />
     <Compile Include="Consumers\AddProductCommandConsumer.cs" />
+    <Compile Include="Consumers\DeleteCategoryCommandConsumer.cs" />
+    <Compile Include="Consumers\DeleteProductCommandConsumer.cs" />
+    <Compile Include="Consumers\UpdateCategoryCommandConsumer.cs" />
     <Compile Include="Consumers\UpdateProductCommandConsumer.cs" />
     <Compile Include="Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Messages\ProductAddedEvent.cs" />
+    <Compile Include="Messages\CategoryDeletedEvent.cs" />
+    <Compile Include="Messages\CategoryUpdatedEvent.cs" />
+    <Compile Include="Messages\ProductDeletedEvent.cs" />
     <Compile Include="Messages\ProductUpdatedEvent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

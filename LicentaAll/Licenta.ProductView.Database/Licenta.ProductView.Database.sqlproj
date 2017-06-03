@@ -115,6 +115,7 @@
     <Folder Include="DataSeeds" />
     <Folder Include="DataSeeds\PostDeployment" />
     <Folder Include="DataSeeds\PostDeployment\Lookup" />
+    <Folder Include="DataSeeds\PostDeployment\Data" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Licenta.ProductView.Database.publish.xml" />
@@ -124,8 +125,12 @@
     <Build Include="dbo\Tables\Category.sql" />
     <Build Include="dbo\Tables\Products.sql" />
     <Build Include="dbo\Views\ProductView.sql" />
+    <None Include="DataSeeds\PostDeployment\Data\Category.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="DataSeeds\PostDeployment\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Licenta.ProductView.Database.refactorlog" />
   </ItemGroup>
 </Project>

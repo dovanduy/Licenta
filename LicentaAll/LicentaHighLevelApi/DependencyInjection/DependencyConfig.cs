@@ -1,9 +1,9 @@
-﻿using LicentaHighLevelApi.Services;
+﻿using System.Web.Http;
+using LicentaHighLevelApi.Services;
 using LicentaHighLevelApi.Services.Interfaces;
 using Microsoft.Practices.Unity;
-using System.Web.Http;
 
-namespace LicentaHighLevelApi.AppStart
+namespace LicentaHighLevelApi.DependencyInjection
 {
     public class DependencyConfig
     {
@@ -11,7 +11,9 @@ namespace LicentaHighLevelApi.AppStart
         {
             var container = new UnityContainer();
 
-            container.RegisterType<IProductsService, ProductsService>();
+            container.RegisterType<IProductService, ProductService>();
+            container.RegisterType<ICategoryService, CategoryService>();
+            container.RegisterType<IReviewService, ReviewService>();
 
             config.DependencyResolver = new UnityResolver(container);
         }

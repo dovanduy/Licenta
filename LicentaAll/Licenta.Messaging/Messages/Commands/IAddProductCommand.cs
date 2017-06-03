@@ -1,6 +1,6 @@
 ﻿using Licenta.Messaging.Model;
 
-namespace Licenta.Messaging.Messages
+namespace Licenta.Messaging.Messages.Commands
 {
     public interface IAddProductCommand
     {

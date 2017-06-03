@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       [dbo].[ProductRatings].[MS_DiagramPane1] (Extended Property)
+       [dbo].[ProductRatings].[MS_DiagramPaneCount] (Extended Property)
+       [dbo].[ReviewList].[MS_DiagramPane1] (Extended Property)
+       [dbo].[ReviewList].[MS_DiagramPaneCount] (Extended Property)
+     Alter
+       [dbo].[Review] (Table)
+       [dbo].[ProductRatings] (View)
+       [dbo].[ReviewList] (View)
+
+** Supporting actions

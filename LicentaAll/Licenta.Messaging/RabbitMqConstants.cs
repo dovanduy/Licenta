@@ -10,7 +10,7 @@
         public const string   ProductServiceQueue =    "product.service";
         public const string InventoryServiceQueue =  "inventory.service";
         public const string    ReviewServiceQueue =     "review.service";
-        public const string InvoicingServiceQueue =  "invoicing.service";
+        public const string SalesServiceQueue =  "invoicing.service";
         public const string   LoggingServiceQueue =    "logging.service";
         public const string     OrderServiceQueue =      "order.service";
         public const string  DeliveryServiceQueue =   "delivery.service";

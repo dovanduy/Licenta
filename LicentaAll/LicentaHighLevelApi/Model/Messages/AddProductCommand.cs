@@ -1,4 +1,4 @@
-﻿using Licenta.Messaging.Messages;
+﻿using Licenta.Messaging.Messages.Commands;
 
 namespace LicentaHighLevelApi.Model.Messages
 {

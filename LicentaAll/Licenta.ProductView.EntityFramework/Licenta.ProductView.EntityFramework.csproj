@@ -54,9 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryEnum.cs">
-      <DependentUpon>DatabaseEnums.tt</DependentUpon>
-    </Compile>
     <Compile Include="Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

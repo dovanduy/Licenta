@@ -1,0 +1,12 @@
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\Licenta.Review.EntityFramework.dll.config
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\Licenta.Review.EntityFramework.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\Licenta.Review.EntityFramework.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\EntityFramework.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\EntityFramework.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\obj\Debug\Licenta.Review.EntityFramework.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\obj\Debug\Licenta.Review.EntityFramework.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.EntityFramework\obj\Debug\Licenta.Review.EntityFramework.pdb

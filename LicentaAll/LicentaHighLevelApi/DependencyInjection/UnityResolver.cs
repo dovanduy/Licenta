@@ -1,9 +1,9 @@
-﻿using Microsoft.Practices.Unity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Http.Dependencies;
+using Microsoft.Practices.Unity;
 
-namespace LicentaHighLevelApi
+namespace LicentaHighLevelApi.DependencyInjection
 {
     public class UnityResolver : IDependencyResolver
     {

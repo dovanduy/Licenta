@@ -1,0 +1,9 @@
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\bin\Debug\Licenta.Review.Database.dacpac
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\bin\Debug\Licenta.Review.Database.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\bin\Debug\Licenta.Review.Database.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\obj\Debug\Model.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\obj\Debug\refactor.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\obj\Debug\postdeploy.sql
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\obj\Debug\predeploy.sql
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\obj\Debug\Licenta.Review.Database.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.Database\obj\Debug\Licenta.Review.Database.pdb

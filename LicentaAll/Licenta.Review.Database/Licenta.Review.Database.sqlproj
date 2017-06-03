@@ -130,4 +130,7 @@
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Licenta.Review.Database.publish.xml" />
+  </ItemGroup>
 </Project>

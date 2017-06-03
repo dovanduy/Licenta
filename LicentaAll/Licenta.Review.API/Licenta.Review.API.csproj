@@ -105,6 +105,12 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Licenta.Review.EntityFramework\Licenta.Review.EntityFramework.csproj">
+      <Project>{8d1c6005-9ee0-4b04-976d-cc29660bbfd7}</Project>
+      <Name>Licenta.Review.EntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

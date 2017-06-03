@@ -1,4 +1,4 @@
-﻿namespace Licenta.Messaging.Messages
+﻿namespace Licenta.Messaging.Messages.Events
 {
     public interface IProductPriceUpdatedEvent
     {
