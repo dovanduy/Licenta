@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Licenta.Messaging;
+﻿using System.Threading.Tasks;
 using Licenta.Messaging.Messages.Commands;
 using Licenta.Messaging.Model;
-using LicentaHighLevelApi.Model.DTOs;
 using LicentaHighLevelApi.Model.Messages;
 using LicentaHighLevelApi.Services.Interfaces;
-using MassTransit;
 
 namespace LicentaHighLevelApi.Services
 {

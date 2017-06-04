@@ -3,7 +3,6 @@ using Licenta.Messaging.Messages.Events;
 using Licenta.Products.Messages;
 using MassTransit;
 using System;
-using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Linq;
 using System.Threading.Tasks;

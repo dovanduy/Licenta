@@ -1,0 +1,5 @@
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\Database\bin\Debug\Database.dacpac
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\Database\bin\Debug\Database.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\Database\bin\Debug\Database.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\Database\obj\Debug\Database.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\Database\obj\Debug\Database.pdb

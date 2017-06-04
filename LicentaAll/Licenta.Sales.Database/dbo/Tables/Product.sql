@@ -1,6 +1,5 @@
 ﻿CREATE TABLE [dbo].[Product] (
-    [ProductId] INT   NOT NULL,
-    [Price]     MONEY NOT NULL,
-    CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED ([ProductId] ASC)
+    [ProductId] INT   NOT NULL PRIMARY KEY,
+    [Price]     MONEY NOT NULL
 );
 

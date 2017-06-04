@@ -1,0 +1,48 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Product]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[Product].[CategoryId] on table [dbo].[Product] must be added, but the column has no default value and
+         does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The column [dbo].[Product].[Name] on table [dbo].[Product] must be added, but the column has no default value and does
+         not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either:
+         add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a
+         deployment option.
+       The column [dbo].[Product].[Price] on table [dbo].[Product] must be added, but the column has no default value and does
+         not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either:
+         add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a
+         deployment option.
+
+** User actions
+     Table rebuild
+       [dbo].[Product] (Table)
+     Create
+       [dbo].[AditionalDetails] (Table)
+       [dbo].[Category] (Table)
+       [dbo].[Reaction] (Table)
+       [dbo].[Review] (Table)
+       [dbo].[Sale] (Table)
+       [dbo].[SaleStatusLookup] (Table)
+       Default Constraint: unnamed constraint on [dbo].[Category] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Category] (Default Constraint)
+       [dbo].[DF_Sale_StatusId] (Default Constraint)
+       [dbo].[DF_Sale_Date_Created] (Default Constraint)
+       [dbo].[FK_Product_Category] (Foreign Key)
+       [dbo].[FK_AditionalDetails_Products] (Foreign Key)
+       [dbo].[FK_Reaction_Review] (Foreign Key)
+       [dbo].[FK_Review_Product] (Foreign Key)
+       [dbo].[FK_Sale_SaleStatus] (Foreign Key)
+       [dbo].[FK_Sale_Product] (Foreign Key)
+
+** Supporting actions
+
+The column [dbo].[Product].[CategoryId] on table [dbo].[Product] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Product].[Name] on table [dbo].[Product] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [dbo].[Product].[Price] on table [dbo].[Product] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

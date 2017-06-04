@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Sale] (
-    [SaleId]             INT            NOT NULL,
+    [SaleId]             INT            NOT NULL IDENTITY(1,1) PRIMARY KEY,
     [ProductId]          INT            NOT NULL,
     [Items]              INT            NOT NULL,
     [Price]              MONEY          NOT NULL,
@@ -10,7 +10,6 @@
     [StatusId]           INT            CONSTRAINT [DF_Sale_StatusId] DEFAULT ((1)) NOT NULL,
     [Date_Created]       DATE           CONSTRAINT [DF_Sale_Date_Created] DEFAULT (getdate()) NOT NULL,
     [Date_StatusChanged] DATE           NULL,
-    CONSTRAINT [PK_Sale] PRIMARY KEY CLUSTERED ([SaleId] ASC),
     CONSTRAINT [FK_Sale_SaleStatus] FOREIGN KEY ([StatusId]) REFERENCES [dbo].[SaleStatusLookup] ([SaleStatusId])
 );
 

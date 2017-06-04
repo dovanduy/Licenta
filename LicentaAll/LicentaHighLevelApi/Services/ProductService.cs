@@ -1,6 +1,4 @@
-﻿using Licenta.Messaging;
-using Licenta.Messaging.Messages;
-using Licenta.Messaging.Messages.Commands;
+﻿using Licenta.Messaging.Messages.Commands;
 using Licenta.Messaging.Model;
 using LicentaHighLevelApi.Model.DTOs;
 using LicentaHighLevelApi.Model.Messages;
@@ -14,7 +12,6 @@ using Newtonsoft.Json;
 using Licenta.ViewContracts;
 using System.Linq;
 using System.IO;
-using MassTransit;
 
 namespace LicentaHighLevelApi.Services
 {
@@ -47,7 +44,7 @@ namespace LicentaHighLevelApi.Services
             }
         }
 
-        public async Task<ProductDTO> GetById(int Id)
+        public async Task<ProductDTO> GetById(int id)
         {
             throw new NotImplementedException();
         }

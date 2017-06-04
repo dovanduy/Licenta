@@ -1,9 +1,5 @@
-﻿using Licenta.Messaging;
-using Licenta.Messaging.Messages;
-using Licenta.Messaging.Model;
-using LicentaHighLevelApi.Model.DTOs;
+﻿using LicentaHighLevelApi.Model.DTOs;
 using LicentaHighLevelApi.Services.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -26,9 +22,9 @@ namespace LicentaHighLevelApi.Controllers
             return await _productService.GetAllProductsForList();
         }
 
-        public async Task<ProductDTO> GetById(int Id)
+        public async Task<ProductDTO> GetById(int id)
         {
-            return await _productService.GetById(Id);
+            return await _productService.GetById(id);
         }
 
         public async Task<IHttpActionResult> Post(ProductDTO product)
