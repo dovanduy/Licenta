@@ -17,7 +17,6 @@ namespace Licenta.Review.Consumers
             using (ReviewDbContext unitOfWork = new ReviewDbContext())
             {
                 var reviewToBeEdited = context.Message.Review;
-                await Console.Out.WriteLineAsync($"Review update command recieved for product {reviewToBeEdited.ReviewId}.");
                 if (unitOfWork.Reviews.Any(x => x.ReviewId == reviewToBeEdited.ReviewId && !x.DeletionDate.HasValue))
                 {
                     bool ratingChanged = false;
@@ -39,19 +38,11 @@ namespace Licenta.Review.Consumers
                     if (ratingChanged)
                     {
                         await context.Publish(CreateProductRatingUpdatedEvent(unitOfWork, editedReview.ProductId));
-
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        await Console.Out.WriteLineAsync("Event published: ProductRatingUpdatedEvent");
-                        Console.ForegroundColor = ConsoleColor.Gray;
                     }
                 }
                 else
                 {
-                    string message = $"No review with id {reviewToBeEdited.ReviewId}";
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    await Console.Out.WriteLineAsync(message);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    throw new EntityCommandExecutionException(message);
+                    throw new EntityCommandExecutionException($"No review with id {reviewToBeEdited.ReviewId}");
                 }
             }
         }

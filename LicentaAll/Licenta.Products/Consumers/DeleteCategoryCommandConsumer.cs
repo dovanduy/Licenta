@@ -3,56 +3,25 @@ using Licenta.Messaging.Messages.Events;
 using Licenta.Products.Messages;
 using MassTransit;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core;
-using System.Linq;
 using System.Threading.Tasks;
+using Licenta.Products.Services.Interfaces;
 
 namespace Licenta.Products.Consumers
 {
     public class DeleteCategoryCommandConsumer : IConsumer<IDeleteCategoryCommand>
     {
-        public async Task Consume(ConsumeContext<IDeleteCategoryCommand> context)
+        private ICategoryService CategoryService;
+
+        public DeleteCategoryCommandConsumer(ICategoryService categoryService)
         {
-            using (ProductsDbContext unitOfWork = new ProductsDbContext())
-            {
-                var idOfCategoryToBeDeleted = context.Message.CategoryId;
-
-                await Console.Out.WriteLineAsync($"Category delete command recieved for product {idOfCategoryToBeDeleted}.");
-
-                if (unitOfWork.Categories.Any(x => x.CategoryId == idOfCategoryToBeDeleted))
-                {
-                    Category editedCategory = unitOfWork.Categories.First(x => x.CategoryId == idOfCategoryToBeDeleted);
-                    unitOfWork.Categories.Attach(editedCategory);
-                    editedCategory.DateDeleted = DateTime.Now;
-                    
-                    await unitOfWork.SaveChangesAsync();
-                    await Console.Out.WriteLineAsync($"Category {editedCategory.CategoryId} : {editedCategory.Name} was deleted.");
-
-                    await context.Publish(CreateCategoryDeletedEvent(idOfCategoryToBeDeleted));
-
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    await Console.Out.WriteLineAsync("Event published: CategoryDeletedEvent");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    await Console.Out.WriteLineAsync($"No category with id {idOfCategoryToBeDeleted}");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    throw new EntityCommandExecutionException($"No category with id {idOfCategoryToBeDeleted}");
-                }
-            }
+            CategoryService = categoryService;
         }
 
-        private void MoveProductsToUncategorized(IProductsDbContext unitOfWork, int idOfCategoryToBeDeleted)
+        public async Task Consume(ConsumeContext<IDeleteCategoryCommand> context)
         {
-            IList<Product> productsToMove = unitOfWork.Products.Where(x => x.CategoryId == idOfCategoryToBeDeleted).ToList();
-
-            foreach(Product p in productsToMove){
-                unitOfWork.Products.Attach(p);
-                p.CategoryId = 0;
-            }
+            await CategoryService.DeleteCategory(context.Message.CategoryId);
+            await Console.Out.WriteLineAsync($"Category {context.Message.CategoryId} was deleted.");
+            await context.Publish(CreateCategoryDeletedEvent(context.Message.CategoryId));
         }
 
         private ICategoryDeletedEvent CreateCategoryDeletedEvent(int categoryId)

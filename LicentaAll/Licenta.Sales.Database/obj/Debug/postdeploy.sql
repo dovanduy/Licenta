@@ -14,12 +14,12 @@ MERGE INTO dbo.SaleStatusLookup AS Target
 USING (VALUES (1,'Projected'), 
 			(2, 'Definitive'), 
 			(3, 'Canceled'))  
-       AS Source (SaleStatusId, Name)  
-ON Target.SaleStatusId = Source.SaleStatusId  
+       AS Source (Id, Name)  
+ON Target.Id = Source.Id  
 WHEN MATCHED THEN  
 	UPDATE SET Name = Source.Name  
 WHEN NOT MATCHED BY TARGET THEN  
-	INSERT (SaleStatusId, Name) VALUES (SaleStatusId, Name)
+	INSERT (Id, Name) VALUES (Id, Name)
 WHEN NOT MATCHED BY SOURCE THEN
 	DELETE;
 GO

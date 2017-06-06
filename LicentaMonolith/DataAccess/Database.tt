@@ -257,8 +257,6 @@
     {
 		if(t.ClassName != "SaleStatus" )
 			return ": Contracts.DataAccess.IMaintainableEntity";
-	    else
-			t.ClassName += "s";
 
         //if (t.ClassName == "User")
         //    return ": IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>";

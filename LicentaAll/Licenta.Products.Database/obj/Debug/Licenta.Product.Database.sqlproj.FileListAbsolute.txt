@@ -3,3 +3,7 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\bi
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\bin\Debug\Licenta.Products.Database.pdb
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\obj\Debug\Licenta.Products.Database.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\obj\Debug\Licenta.Products.Database.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\obj\Debug\Model.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\obj\Debug\refactor.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\obj\Debug\postdeploy.sql
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Products.Database\obj\Debug\predeploy.sql

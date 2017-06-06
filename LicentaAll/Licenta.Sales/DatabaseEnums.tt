@@ -63,7 +63,7 @@ namespace <#=enumNameSpace#>
 		//Fill only the values that the field "enumDescriptionColumnName" have value
 		if(!string.IsNullOrEmpty(columnReader[enumDescriptionColumnName].ToString().Trim()))
 		{
-	#>	<#=columnReader[enumDescriptionColumnName].ToString()#> = <#=columnReader[tableName.Replace("Lookup","") + "Id"].ToString()#>,
+	#>	<#=columnReader[enumDescriptionColumnName].ToString()#> = <#=columnReader["Id"].ToString()#>,
 	<#	}
 	}#>
 }

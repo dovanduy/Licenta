@@ -117,4 +117,10 @@
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Licenta.Inventory.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Licenta.Inventory.Database.publish.xml" />
+  </ItemGroup>
 </Project>

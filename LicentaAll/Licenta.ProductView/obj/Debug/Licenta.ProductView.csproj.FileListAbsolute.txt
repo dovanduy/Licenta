@@ -28,3 +28,9 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debu
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\Licenta.ProductView.csprojResolveAssemblyReference.cache
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\Licenta.ProductView.exe
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\obj\Debug\Licenta.ProductView.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\MassTransit.UnityIntegration.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\MassTransit.UnityIntegration.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml

@@ -9,11 +9,11 @@
     ConnectionStringName = "Database";   // Searches for this connection string in config files listed below in the ConfigFilenameSearchOrder setting
     //ConnectionStringName is the only required setting
     // Namespace = ""; // Override the default namespace here
-    DbContextName = "InventoryDbContext";
+    DbContextName = "SalesDbContext";
     //DbContextInterfaceName = "IMyDbContext"; //Defaults to "I" + DbContextName
-    DbContextInterfaceBaseClasses = "System.IDisposable";    // Specify what the base classes are for your database context interface
+    DbContextInterfaceBaseClasses = "EntityFramework.UnitOfWork.Interfaces.IDbContext";    // Specify what the base classes are for your database context interface
     DbContextBaseClass = "System.Data.Entity.DbContext";   // Specify what the base class is for your DbContext. For ASP.NET Identity use "IdentityDbContext<ApplicationUser>"
-    //DefaultConstructorArgument = "EnvironmentConnectionStrings.MyDbContext"; //defaults to "Name=" + ConnectionStringName
+    //DefaultConstructorArgument = '"' + ConnectionString + '"' + ", false"; //defaults to "Name=" + ConnectionStringName
     TargetFrameworkVersion = "4.51"; // Please set this to your .NET framework version, 4.0, 4.5, 4.51, etc.
     ConfigurationClassName = "Configuration"; // Configuration, Mapping, Map, etc. This is appended to the Poco class name to configure the mappings.
     ConfigFilenameSearchOrder = new[] { "app.config", "web.config", "app.config.transform", "web.config.transform" }; // Add more here if required. The config files are searched for in the local project first, then the whole solution second.
@@ -31,7 +31,7 @@
     DisableGeographyTypes = false; // Turns off use of System.Data.Entity.Spatial.DbGeography and System.Data.Entity.Spatial.DbGeometry as OData doesn't support entities with geometry/geography types.
     CollectionType = "System.Collections.Generic.List";  // Determines the type of collection for the Navigation Properties. "ObservableCollection" for example. Add "System.Collections.ObjectModel" to AdditionalNamespaces if setting the CollectionType = "ObservableCollection".
     NullableShortHand = true; //true => T?, false => Nullable<T>
-    AddUnitTestingDbContext = true; // Will add a FakeDbContext and FakeDbSet for easy unit testing
+    AddUnitTestingDbContext = false; // Will add a FakeDbContext and FakeDbSet for easy unit testing
     IncludeQueryTraceOn9481Flag = false; // If SqlServer 2014 appears frozen / take a long time when this file is saved, try setting this to true (you will also need elevated privileges).
     UsePrivateSetterForComputedColumns = true; // If the columns is computed, use a private setter.
     AdditionalNamespaces = new[] { "Newtonsoft.Json" };  // To include extra namespaces, include them here. i.e. "Microsoft.AspNet.Identity.EntityFramework"
@@ -68,7 +68,10 @@
     //      2. Add the following to the top of this file and adjust path, and remove the space between the angle bracket and # at the beginning and end.
     //         < #@ assembly name="your full path to \EntityFramework.Contrib.dll" # >
     //      3. Change the line below to: Inflector.PluralizationService = new SpanishPluralizationService();
-    Inflector.PluralizationService = new EnglishPluralizationService();
+    Inflector.PluralizationService = new EnglishPluralizationService(new[]
+	{
+		new CustomPluralizationEntry("SaleStatus", "SaleStatus")
+	});
     // If pluralisation does not do the right thing, override it here by adding in a custom entry.
     //Inflector.PluralizationService = new EnglishPluralizationService(new[]
     //{
@@ -126,7 +129,7 @@
     //              ColumnFilterExclude = new Regex("^FK_.*$");
     SchemaFilterExclude = null;
     SchemaFilterInclude = null;
-    TableFilterExclude = null;
+    TableFilterExclude = new Regex("__RefactorLog");
     TableFilterInclude = null;
     ColumnFilterExclude = null;
 
@@ -252,6 +255,9 @@
     // Writes optional base classes
     Func<Table, string> WritePocoBaseClasses = t =>
     {
+		if(t.ClassName != "SaleStatus" )
+			return ": EntityFramework.IMaintainableEntity";
+
         //if (t.ClassName == "User")
         //    return ": IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>";
         return "";

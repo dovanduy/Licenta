@@ -4,6 +4,7 @@ using Licenta.Review.Consumers;
 using MassTransit;
 using System;
 using System.Collections.Generic;
+using Licenta.Messaging.Generic;
 
 namespace Licenta.Review
 {
@@ -13,42 +14,41 @@ namespace Licenta.Review
         {
             Console.Title = "Review";
 
-            List<IBusControl> busses = new List<IBusControl>
+            var bus = BusConfigurator.ConfigureBus((cfg, host) =>
             {
-                BusConfigurator.ConfigureBus((cfg, host) =>
-                {
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".review.add",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<AddReviewCommandConsumer>();
-                        });
-                
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".review.update",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<UpdateReviewCommandConsumer>();
-                        });
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".review.add",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<AddReviewCommandConsumer>();
+                    });
 
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".review.delete",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<DeleteReviewCommandConsumer>();
-                        });
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".review.update",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<UpdateReviewCommandConsumer>();
+                    });
 
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".product.deleted",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<ProductDeletedEventConsumer>();
-                        });
-                })
-            };
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".review.delete",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<DeleteReviewCommandConsumer>();
+                    });
 
-            foreach(IBusControl bus in busses)
-                bus.Start();
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".product.deleted",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<ProductDeletedEventConsumer>();
+                    });
+            });
+
+            bus.ConnectConsumeObserver(new ConsumeObserver());
+            bus.ConnectPublishObserver(new PublishObserver());
+
+            bus.Start();
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Review service started listening... Press [ENTER] to exit");
@@ -56,8 +56,7 @@ namespace Licenta.Review
 
             Console.ReadLine();
 
-            foreach (IBusControl bus in busses)
-                bus.Stop();
+            bus.Stop();
         }
     }
 }

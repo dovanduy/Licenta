@@ -19,9 +19,6 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\BusinessLogic.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Contracts.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\DataAccess.dll
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\GreenPipes.dll
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\MassTransit.dll
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\MassTransit.RabbitMqTransport.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Microsoft.IdentityModel.Logging.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Microsoft.IdentityModel.Tokens.dll
@@ -39,7 +36,6 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\NewId.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Newtonsoft.Json.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Owin.dll
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\RabbitMQ.Client.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Swashbuckle.Core.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\System.Net.Http.Formatting.dll
@@ -52,9 +48,6 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\BusinessLogic.pdb
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Contracts.pdb
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\DataAccess.pdb
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\GreenPipes.xml
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\MassTransit.xml
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\MassTransit.RabbitMqTransport.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Microsoft.IdentityModel.Logging.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Microsoft.IdentityModel.Tokens.xml
@@ -70,7 +63,6 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\Newtonsoft.Json.xml
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\RabbitMQ.Client.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\System.Net.Http.Formatting.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\LicentaHighLevelApi\bin\System.Web.Http.xml

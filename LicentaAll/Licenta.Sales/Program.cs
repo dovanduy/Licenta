@@ -1,6 +1,7 @@
 ﻿using System;
 using GreenPipes;
 using Licenta.Messaging;
+using Licenta.Messaging.Generic;
 using Licenta.Sales.Consumers;
 using MassTransit;
 
@@ -21,6 +22,9 @@ namespace Licenta.Sales
                         e.Consumer<ProductUpdatedEventConsumer>();
                     });
             });
+
+            bus.ConnectConsumeObserver(new ConsumeObserver());
+            bus.ConnectPublishObserver(new PublishObserver());
 
             bus.Start();
 

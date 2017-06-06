@@ -17,7 +17,6 @@ namespace Licenta.Review.Consumers
             using (ReviewDbContext unitOfWork = new ReviewDbContext())
             {
                 var reviewToBeDeleted = context.Message.ReviewId;
-                await Console.Out.WriteLineAsync($"Review {reviewToBeDeleted} delete command recieved.");
                 if (unitOfWork.Reviews.Any(x => x.ReviewId == reviewToBeDeleted))
                 {
                     var deletedReview = unitOfWork.Reviews.First(x => x.ReviewId == reviewToBeDeleted);
@@ -29,18 +28,10 @@ namespace Licenta.Review.Consumers
                     await Console.Out.WriteLineAsync($"Review {deletedReview.ReviewId} was deleted.");
 
                     await context.Publish(CreateProductRatingUpdatedEvent(unitOfWork, deletedReview.ProductId));
-
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    await Console.Out.WriteLineAsync("Event published: ProductRatingUpdatedEvent");
-                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
                 else
                 {
-                    string message = $"Review {reviewToBeDeleted} does not exist.";
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    await Console.Out.WriteLineAsync(message);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    throw new EntityCommandExecutionException(message);
+                    throw new EntityCommandExecutionException($"Review {reviewToBeDeleted} does not exist.");
                 }
             }
 

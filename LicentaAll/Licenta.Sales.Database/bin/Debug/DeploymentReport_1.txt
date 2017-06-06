@@ -1,0 +1,25 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Product]
+       [dbo].[Sale]
+       [dbo].[SaleStatusLookup]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Product] (Table)
+       [dbo].[Sale] (Table)
+       [dbo].[SaleStatusLookup] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[DF_Sale_StatusId] (Default Constraint)
+       [dbo].[DF_Sale_Date_Created] (Default Constraint)
+       [dbo].[FK_Sale_SaleStatus] (Foreign Key)
+     Create
+       [dbo].[FK_Sale_SaleStatus] (Foreign Key)

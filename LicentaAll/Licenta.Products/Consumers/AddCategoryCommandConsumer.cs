@@ -3,34 +3,24 @@ using Licenta.Products.Messages;
 using MassTransit;
 using System;
 using System.Threading.Tasks;
+using Licenta.Products.Services.Interfaces;
 
 namespace Licenta.Products.Consumers
 {
     class AddCategoryCommandConsumer : IConsumer<IAddCategoryCommand>
     {
+        private ICategoryService CategoryService;
+
+        public AddCategoryCommandConsumer(ICategoryService categoryService)
+        {
+            CategoryService = categoryService;
+        }
+
         public async Task Consume(ConsumeContext<IAddCategoryCommand> context)
         {
-            using (ProductsDbContext unitOfWork = new ProductsDbContext())
-            {
-                var categoryToAdd = context.Message.Category;
-                await Console.Out.WriteLineAsync("Category add command recieved.");
-                var addedCategory = new Category
-                {
-                    Name = categoryToAdd.Name,
-                    Visible = categoryToAdd.Visible
-                };
-
-                unitOfWork.Categories.Add(addedCategory);
-
-                await unitOfWork.SaveChangesAsync();
-                await Console.Out.WriteLineAsync($"Category {addedCategory.CategoryId} : '{addedCategory.Name}' was added.");
-
-                await context.Publish(MapCategoryAddedToMessaje(addedCategory));
-
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                await Console.Out.WriteLineAsync("Event published: CategoryUpdatedEvent");
-                Console.ForegroundColor = ConsoleColor.Gray;
-            }
+            var addedCategory = await CategoryService.AddNewCategory(context.Message.Category);
+            await Console.Out.WriteLineAsync($"Category {addedCategory.Id} : '{addedCategory.Name}' was added.");
+            await context.Publish(MapCategoryAddedToMessaje(addedCategory));
         }
 
         private CategoryUpdatedEvent MapCategoryAddedToMessaje(Category addedCategory)
@@ -39,7 +29,7 @@ namespace Licenta.Products.Consumers
             {
                 Category = new Messaging.Model.Category
                 {
-                    CategoryId = addedCategory.CategoryId,
+                    CategoryId = addedCategory.Id,
                     Name = addedCategory.Name,
                     Visible = addedCategory.Visible
                 }

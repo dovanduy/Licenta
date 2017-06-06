@@ -1,5 +1,7 @@
 ﻿CREATE TABLE [dbo].[Product] (
-    [ProductId] INT   NOT NULL PRIMARY KEY,
-    [Price]     MONEY NOT NULL
+    [Id] INT   NOT NULL PRIMARY KEY,
+    [Price]     MONEY NOT NULL, 
+    [Row_Version] INT NOT NULL DEFAULT 1, 
+    [Date_Deleted] DATE NULL
 );
 

@@ -16,7 +16,6 @@ namespace Licenta.Review.Consumers
         {
             using (ReviewDbContext unitOfWork = new ReviewDbContext())
             {
-                await Console.Out.WriteLineAsync("Review add command recieved.");
                 var reviewToBeAdded = context.Message.Review;
 
                 bool userAlreadyReaviewed =
@@ -41,18 +40,10 @@ namespace Licenta.Review.Consumers
                     await Console.Out.WriteLineAsync($"Review {addedReview.ReviewId} was added.");
 
                     await context.Publish(CreateProductRatingUpdatedEvent(unitOfWork, addedReview.ProductId));
-
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    await Console.Out.WriteLineAsync("Event published: ProductRatingUpdatedEvent");
-                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
                 else
                 {
-                    string message = $"User {reviewToBeAdded.UserId} already reviewed product {reviewToBeAdded.ProductId}.";
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    await Console.Out.WriteLineAsync(message);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    throw new EntityCommandExecutionException(message);
+                    throw new EntityCommandExecutionException($"User {reviewToBeAdded.UserId} already reviewed product {reviewToBeAdded.ProductId}.");
                 }
             }
         }

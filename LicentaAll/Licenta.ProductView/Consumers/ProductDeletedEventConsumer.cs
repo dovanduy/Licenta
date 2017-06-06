@@ -17,8 +17,6 @@ namespace Licenta.ProductView.Consumers
             {
                 var idOfProductToBeDeleted = context.Message.ProductId;
 
-                await Console.Out.WriteLineAsync($"Product deleted event recieved for product {idOfProductToBeDeleted}.");
-
                 if (unitOfWork.Products.Any(x => x.ProductId == idOfProductToBeDeleted))
                 {
                     var editedProduct = unitOfWork.Products
@@ -33,11 +31,7 @@ namespace Licenta.ProductView.Consumers
                 }
                 else
                 {
-                    string message = $"No product with id {idOfProductToBeDeleted}";
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    await Console.Out.WriteLineAsync(message);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    throw new EntityCommandExecutionException(message);
+                    throw new EntityCommandExecutionException($"No product with id {idOfProductToBeDeleted}");
                 }
             }
         }

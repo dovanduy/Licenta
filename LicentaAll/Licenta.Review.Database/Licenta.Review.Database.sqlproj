@@ -133,4 +133,7 @@
   <ItemGroup>
     <None Include="Licenta.Review.Database.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Licenta.Review.Database.refactorlog" />
+  </ItemGroup>
 </Project>

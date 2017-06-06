@@ -13,15 +13,14 @@ namespace Licenta.Sales.Consumers
     {
         public async Task Consume(ConsumeContext<IProductUpdatedEvent> context)
         {
-            using (InventoryDbContext unitOfWork = new InventoryDbContext())
+            using (SalesDbContext unitOfWork = new SalesDbContext())
             {
                 var updatedProductId = context.Message.Product.ProductId;
-                await Console.Out.WriteLineAsync($"Product updated event recieved for product {updatedProductId}.");
                 var price = context.Message.Product.Price;
 
-                if (unitOfWork.Products.Any(x => x.ProductId == updatedProductId))
+                if (unitOfWork.Products.Any(x => x.Id == updatedProductId))
                 {
-                    var productToUpdate = unitOfWork.Products.First(x => x.ProductId == updatedProductId);
+                    var productToUpdate = unitOfWork.Products.First(x => x.Id == updatedProductId);
                     unitOfWork.Products.Attach(productToUpdate);
                     productToUpdate.Price = price;
 
@@ -32,7 +31,7 @@ namespace Licenta.Sales.Consumers
                 {
                     unitOfWork.Products.Add(new Product
                     {
-                        ProductId = updatedProductId,
+                        Id = updatedProductId,
                         Price = price
                     });
 
@@ -41,9 +40,6 @@ namespace Licenta.Sales.Consumers
                 }
 
                 await context.Publish(CreateInventoryUpdatedEvent(updatedProductId, price));
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                await Console.Out.WriteLineAsync("Event published: ProductInventoryUpdatedEvent");
-                Console.ForegroundColor = ConsoleColor.Gray;
             }
         }
 

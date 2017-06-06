@@ -15,8 +15,6 @@ namespace Licenta.ProductView.Consumers
             {
                 var categoryInQuestion = context.Message.Category;
 
-                await Console.Out.WriteLineAsync($"Category updated event recieved for category {categoryInQuestion.CategoryId}.");
-
                 if (unitOfWork.Categories.Any(x => x.CategoryId == categoryInQuestion.CategoryId))
                 {
                     var editedCategory = unitOfWork.Categories.First(x => x.CategoryId == categoryInQuestion.CategoryId);

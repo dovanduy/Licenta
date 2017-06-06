@@ -2,15 +2,19 @@
 using GreenPipes;
 using Licenta.Inventory.Consumers;
 using Licenta.Messaging;
+using Licenta.Messaging.Generic;
 using MassTransit;
+using Microsoft.Practices.Unity;
 
 namespace Licenta.Inventory
 {
-    class Program
+    internal partial class Program
     {
         static void Main(string[] args)
         {
             Console.Title = "Inventory";
+
+            IUnityContainer container = CreateContainer();
 
             var bus = BusConfigurator.ConfigureBus((cfg, host) =>
             {
@@ -18,9 +22,12 @@ namespace Licenta.Inventory
                     e =>
                     {
                         e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                        e.Consumer<ProductUpdatedEventConsumer>();
+                        e.Consumer<ProductUpdatedEventConsumer>(container);
                     });
             });
+
+            bus.ConnectConsumeObserver(new ConsumeObserver());
+            bus.ConnectPublishObserver(new PublishObserver());
 
             bus.Start();
 

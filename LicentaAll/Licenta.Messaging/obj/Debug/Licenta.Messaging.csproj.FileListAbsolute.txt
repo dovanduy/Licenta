@@ -22,3 +22,4 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Messaging\bin\Debug\
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Messaging\bin\Debug\RabbitMQ.Client.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Messaging\obj\Debug\Licenta.Messaging.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Messaging\obj\Debug\Licenta.Messaging.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Messaging\obj\Debug\Licenta.Messaging.csprojResolveAssemblyReference.cache

@@ -8,7 +8,7 @@ namespace DataAccess.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T: class,IMaintainableEntity
     {
-        internal MonolithDbContext _context;
+        internal IDbContext _context;
         internal IDbSet<T> _dbSet;
 
         public GenericRepository(MonolithDbContext unitOfWork)
@@ -43,7 +43,7 @@ namespace DataAccess.Repositories
             if (e.RowVersion > entity.RowVersion)
                 throw new AppConcurencyException("Concurency exception");
             _dbSet.Attach(entity);
-            _context.Entry(entity).State = EntityState.Modified;
+            entity.RowVersion += 1;
         }
     }
 }

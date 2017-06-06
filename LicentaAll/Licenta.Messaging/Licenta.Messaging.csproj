@@ -82,6 +82,8 @@
   <ItemGroup>
     <Compile Include="BusConfigurator.cs" />
     <Compile Include="ContainerConfigurator.cs" />
+    <Compile Include="Generic\ConsumeObserver.cs" />
+    <Compile Include="Generic\PublishObserver.cs" />
     <Compile Include="Messages\Commands\IAddReviewCommand.cs" />
     <Compile Include="Messages\Commands\IDeleteCategoryCommand.cs" />
     <Compile Include="Messages\Commands\IDeleteReviewCommand.cs" />

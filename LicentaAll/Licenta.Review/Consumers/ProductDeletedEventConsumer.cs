@@ -16,7 +16,6 @@ namespace Licenta.Review.Consumers
             using (ReviewDbContext unitOfWork = new ReviewDbContext())
             {
                 var productId = context.Message.ProductId;
-                await Console.Out.WriteLineAsync($"Product deleted event recieved for {productId}.");
                 if (unitOfWork.Reviews.Any(x => x.ProductId == productId && !x.DeletionDate.HasValue))
                 {
                     var reviewsToChange = unitOfWork.Reviews

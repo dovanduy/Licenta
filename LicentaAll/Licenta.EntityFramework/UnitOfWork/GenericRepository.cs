@@ -1,0 +1,48 @@
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
+using Licenta.EntityFramework.UnitOfWork.Interfaces;
+
+namespace Licenta.EntityFramework.UnitOfWork
+{
+    public class GenericRepository<T> : IRepository<T> where T : class, IMaintainableEntity
+    {
+        internal IDbContext _context;
+        internal IDbSet<T> _dbSet;
+
+        public GenericRepository(IDbContext unitOfWork)
+        {
+            _context = unitOfWork;
+            _dbSet = _context.Set<T>();
+        }
+
+        public void Add(T entity)
+        {
+            _dbSet.Add(entity);
+        }
+
+        public IQueryable<T> AllEntities()
+        {
+            return _dbSet.Where(x => !x.DateDeleted.HasValue).AsQueryable();
+        }
+
+        public void Delete(object entityId)
+        {
+            _dbSet.Find(entityId).DateDeleted = DateTime.Now;
+        }
+
+        public T Get(object entityId)
+        {
+            return _dbSet.Find(entityId);
+        }
+
+        public void Update(T entity)
+        {
+            var e = _dbSet.Find(entity.Id);
+            if (e.RowVersion > entity.RowVersion)
+                throw new RepositoryConcurencyException("Concurency exception");
+            _dbSet.Attach(entity);
+            entity.RowVersion += 1;
+        }
+    }
+}

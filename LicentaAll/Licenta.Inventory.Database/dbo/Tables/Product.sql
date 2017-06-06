@@ -1,6 +1,8 @@
 ﻿CREATE TABLE [dbo].[Product] (
-    [ProductId] INT NOT NULL,
+    [Id] INT NOT NULL,
     [Items]     INT NOT NULL,
-    CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED ([ProductId] ASC)
+    [Row_Version] INT NOT NULL DEFAULT 1, 
+    [Date_Deleted] DATE NULL, 
+    CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

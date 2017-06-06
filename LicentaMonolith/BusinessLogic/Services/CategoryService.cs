@@ -13,11 +13,13 @@ namespace BusinessLogic.Services
     {
         private IUnitOfWork _unitOfWork;
         private IRepository<Category> _repository;
+        private IRepository<Product> _repositoryProduct;
 
         public CategoryService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _repository = _unitOfWork.GetRepository<Category>();
+            _repositoryProduct = _unitOfWork.GetRepository<Product>();
         }
 
         public void AddNewCategory(CategoryDto category)
@@ -28,6 +30,9 @@ namespace BusinessLogic.Services
 
         public void DeleteCategory(int categoryId)
         {
+            _repositoryProduct.All()
+                .Where(x => x.CategoryId == categoryId).ToList()
+                .ForEach(x => { x.CategoryId = 0; }); 
             _repository.Delete(categoryId);
             _unitOfWork.SaveChanges();
         }

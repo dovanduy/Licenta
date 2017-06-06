@@ -17,8 +17,6 @@ namespace Licenta.ProductView.Consumers
             {
                 var idOfCategoryToBeDeleted = context.Message.CategoryId;
 
-                await Console.Out.WriteLineAsync($"Category deleted event recieved for product {idOfCategoryToBeDeleted}.");
-
                 if (unitOfWork.Categories.Any(x => x.CategoryId == idOfCategoryToBeDeleted))
                 {
                     Category editedCategory = unitOfWork.Categories.First(x => x.CategoryId == idOfCategoryToBeDeleted);
@@ -33,9 +31,6 @@ namespace Licenta.ProductView.Consumers
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    await Console.Out.WriteLineAsync($"No category with id {idOfCategoryToBeDeleted}");
-                    Console.ForegroundColor = ConsoleColor.Gray;
                     throw new EntityCommandExecutionException($"No category with id {idOfCategoryToBeDeleted}");
                 }
             }

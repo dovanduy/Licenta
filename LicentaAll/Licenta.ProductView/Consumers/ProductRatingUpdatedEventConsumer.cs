@@ -15,7 +15,7 @@ namespace Licenta.ProductView.Consumers
             using (ProductViewDbContext unitOfWork = new ProductViewDbContext())
             {
                 var updatedProductId = context.Message.ProductId;
-                await Console.Out.WriteLineAsync($"Recieved rating update for product {updatedProductId}.");
+
                 if (unitOfWork.Products.Any(x => x.ProductId == updatedProductId))
                 {
                     var productToEdit = unitOfWork.Products.First(x => x.ProductId == updatedProductId);
@@ -27,11 +27,7 @@ namespace Licenta.ProductView.Consumers
                 }
                 else
                 {
-                    string message = $"No product with id {updatedProductId}";
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    await Console.Out.WriteLineAsync(message);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    throw new EntityCommandExecutionException(message);
+                    throw new EntityCommandExecutionException($"No product with id {updatedProductId}");
                 }
             }
         }

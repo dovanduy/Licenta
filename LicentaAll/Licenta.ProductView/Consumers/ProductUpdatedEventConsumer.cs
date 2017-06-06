@@ -23,8 +23,6 @@ namespace Licenta.ProductView.Consumers
                     Text = x.Text
                 }).ToList();
 
-                await Console.Out.WriteLineAsync($"Product updated event recieved for product {productInQuestion.ProductId}.");
-
                 if (unitOfWork.Products.Any(x => x.ProductId == productInQuestion.ProductId))
                 {
                     var editedProduct = unitOfWork.Products.First(x => x.ProductId == productInQuestion.ProductId);

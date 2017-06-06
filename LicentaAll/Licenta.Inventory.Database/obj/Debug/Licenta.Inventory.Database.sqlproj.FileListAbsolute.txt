@@ -1,0 +1,9 @@
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\bin\Debug\Licenta.Inventory.Database.dacpac
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\bin\Debug\Licenta.Inventory.Database.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\bin\Debug\Licenta.Inventory.Database.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\obj\Debug\Model.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\obj\Debug\refactor.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\obj\Debug\postdeploy.sql
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\obj\Debug\predeploy.sql
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\obj\Debug\Licenta.Inventory.Database.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory.Database\obj\Debug\Licenta.Inventory.Database.pdb

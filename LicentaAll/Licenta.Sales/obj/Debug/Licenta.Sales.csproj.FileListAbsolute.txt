@@ -26,3 +26,11 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\Micr
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\obj\Debug\Licenta.Sales.csprojResolveAssemblyReference.cache
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\obj\Debug\Licenta.Sales.exe
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\obj\Debug\Licenta.Sales.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\Licenta.EntityFramework.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\MassTransit.UnityIntegration.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\Licenta.EntityFramework.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\MassTransit.UnityIntegration.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml

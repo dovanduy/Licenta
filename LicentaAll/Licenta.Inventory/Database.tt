@@ -11,9 +11,9 @@
     // Namespace = ""; // Override the default namespace here
     DbContextName = "InventoryDbContext";
     //DbContextInterfaceName = "IMyDbContext"; //Defaults to "I" + DbContextName
-    DbContextInterfaceBaseClasses = "System.IDisposable";    // Specify what the base classes are for your database context interface
+    DbContextInterfaceBaseClasses = "EntityFramework.UnitOfWork.Interfaces.IDbContext";    // Specify what the base classes are for your database context interface
     DbContextBaseClass = "System.Data.Entity.DbContext";   // Specify what the base class is for your DbContext. For ASP.NET Identity use "IdentityDbContext<ApplicationUser>"
-    //DefaultConstructorArgument = "EnvironmentConnectionStrings.MyDbContext"; //defaults to "Name=" + ConnectionStringName
+    //DefaultConstructorArgument = '"' + ConnectionString + '"' + ", false"; //defaults to "Name=" + ConnectionStringName
     TargetFrameworkVersion = "4.51"; // Please set this to your .NET framework version, 4.0, 4.5, 4.51, etc.
     ConfigurationClassName = "Configuration"; // Configuration, Mapping, Map, etc. This is appended to the Poco class name to configure the mappings.
     ConfigFilenameSearchOrder = new[] { "app.config", "web.config", "app.config.transform", "web.config.transform" }; // Add more here if required. The config files are searched for in the local project first, then the whole solution second.
@@ -31,7 +31,7 @@
     DisableGeographyTypes = false; // Turns off use of System.Data.Entity.Spatial.DbGeography and System.Data.Entity.Spatial.DbGeometry as OData doesn't support entities with geometry/geography types.
     CollectionType = "System.Collections.Generic.List";  // Determines the type of collection for the Navigation Properties. "ObservableCollection" for example. Add "System.Collections.ObjectModel" to AdditionalNamespaces if setting the CollectionType = "ObservableCollection".
     NullableShortHand = true; //true => T?, false => Nullable<T>
-    AddUnitTestingDbContext = true; // Will add a FakeDbContext and FakeDbSet for easy unit testing
+    AddUnitTestingDbContext = false; // Will add a FakeDbContext and FakeDbSet for easy unit testing
     IncludeQueryTraceOn9481Flag = false; // If SqlServer 2014 appears frozen / take a long time when this file is saved, try setting this to true (you will also need elevated privileges).
     UsePrivateSetterForComputedColumns = true; // If the columns is computed, use a private setter.
     AdditionalNamespaces = new[] { "Newtonsoft.Json" };  // To include extra namespaces, include them here. i.e. "Microsoft.AspNet.Identity.EntityFramework"
@@ -126,7 +126,7 @@
     //              ColumnFilterExclude = new Regex("^FK_.*$");
     SchemaFilterExclude = null;
     SchemaFilterInclude = null;
-    TableFilterExclude = null;
+    TableFilterExclude = new Regex("__RefactorLog");
     TableFilterInclude = null;
     ColumnFilterExclude = null;
 
@@ -174,8 +174,6 @@
     // As long as the type can be mapped to your new type, all is well.
     //EnumsDefinitions.Add(new EnumDefinition { Schema = "dbo", Table = "match_table_name", Column = "match_column_name", EnumType = "name_of_enum" });
     //EnumsDefinitions.Add(new EnumDefinition { Schema = "dbo", Table = "OrderHeader", Column = "OrderStatus", EnumType = "OrderStatusType" }); // This will replace OrderHeader.OrderStatus type to be an OrderStatusType enum
-	EnumsDefinitions.Add(new EnumDefinition{ Schema="dbo", Table= "CategoryLookup", Column="CategoryId", EnumType = "Enumerations.CategoryEnum" });
-	EnumsDefinitions.Add(new EnumDefinition{ Schema="dbo", Table= "Products", Column="CategoryId", EnumType = "Enumerations.CategoryEnum" });
 
     // Use the following function if you need to apply additional modifications to a column
     // eg. normalise names etc.
@@ -254,6 +252,9 @@
     // Writes optional base classes
     Func<Table, string> WritePocoBaseClasses = t =>
     {
+		if(t.ClassName != "INSERT LOOKUP TABLES HERE" )
+			return ": EntityFramework.IMaintainableEntity";
+
         //if (t.ClassName == "User")
         //    return ": IdentityUser<int, CustomUserLogin, CustomUserRole, CustomUserClaim>";
         return "";

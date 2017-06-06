@@ -26,3 +26,11 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\obj\Debug\Licenta.Inventory.csprojResolveAssemblyReference.cache
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\obj\Debug\Licenta.Inventory.exe
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\obj\Debug\Licenta.Inventory.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\Licenta.EntityFramework.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\MassTransit.UnityIntegration.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\Licenta.EntityFramework.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\MassTransit.UnityIntegration.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Inventory\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml

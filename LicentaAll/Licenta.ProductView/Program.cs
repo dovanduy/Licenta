@@ -4,6 +4,7 @@ using Licenta.ProductView.Consumers;
 using MassTransit;
 using System;
 using System.Collections.Generic;
+using Licenta.Messaging.Generic;
 
 namespace Licenta.ProductView
 {
@@ -13,64 +14,61 @@ namespace Licenta.ProductView
         {
             Console.Title = "ProductView";
 
-            List<IBusControl> busses = new List<IBusControl>
+            var bus = BusConfigurator.ConfigureBus((cfg, host) =>
             {
-                BusConfigurator.ConfigureBus((cfg, host) =>
-                {
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.updated",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<ProductUpdatedEventConsumer>();
-                        });
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.updated",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<ProductUpdatedEventConsumer>();
+                    });
 
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.inventoryupdated",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<ProductInventoryUpdatedEventConsumer>();
-                        });
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.inventoryupdated",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<ProductInventoryUpdatedEventConsumer>();
+                    });
 
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.priceupdated",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<ProductPriceUpdatedEventConsumer>();
-                        });
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.priceupdated",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<ProductPriceUpdatedEventConsumer>();
+                    });
 
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.ratingupdated",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<ProductRatingUpdatedEventConsumer>();
-                        });
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.ratingupdated",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<ProductRatingUpdatedEventConsumer>();
+                    });
 
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.deleted",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<ProductDeletedEventConsumer>();
-                        });
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".product.deleted",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<ProductDeletedEventConsumer>();
+                    });
 
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".category.deleted",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<CategoryDeletedEventConsumer>();
-                        });
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".category.deleted",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<CategoryDeletedEventConsumer>();
+                    });
 
-                    cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".category.updated",
-                        e =>
-                        {
-                            e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                            e.Consumer<CategoryUpdatedEventConsumer>();
-                        });
-                })
-            };
+                cfg.ReceiveEndpoint(host, RabbitMqConstants.ProductViewQueue + ".category.updated",
+                    e =>
+                    {
+                        e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
+                        e.Consumer<CategoryUpdatedEventConsumer>();
+                    });
+            });
 
+            bus.ConnectConsumeObserver(new ConsumeObserver());
 
-            foreach(IBusControl bus in busses)
-                bus.Start();
+            bus.Start();
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("ProductView service started listening... Press [ENTER] to exit");
@@ -78,8 +76,7 @@ namespace Licenta.ProductView
 
             Console.ReadLine();
 
-            foreach (IBusControl bus in busses)
-                bus.Stop();
+            bus.Stop();
         }
     }
 }
