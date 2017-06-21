@@ -59,15 +59,27 @@ export class ShoppingCartService {
   }
 
   public addProductInCart(productId: number) {
-    this.productsIdsInCart.push(productId);
-    this.numberOfProductsInCart = this.numberOfProductsInCart + 1;
+    let productAlreadyInCart = this.productsIdsInCart.find(x => x.id === productId);
+    if (productAlreadyInCart) {
+      this.productsIdsInCart[this.productsIdsInCart.indexOf(productAlreadyInCart)].quantity += 1;
+    } else {
+      this.productsIdsInCart.push({ id: productId, quantity: 1 });
+      this.numberOfProductsInCart = this.numberOfProductsInCart + 1;
+    }
   }
 
-  public remobeProductFromCart(productId: number) {
-    let index = this.productsIdsInCart.indexOf(productId);
-    if (index > -1) {
-      this.productsIdsInCart.splice(index, 1);
-      this.numberOfProductsInCart = this.numberOfProductsInCart - 1;
+  public removeProductFromCart(productId: number) {
+    let productAlreadyInCart = this.productsIdsInCart.find(x => x.id === productId);
+    if (productAlreadyInCart) {
+      let index = this.productsIdsInCart.indexOf(productAlreadyInCart);
+      let quantity = this.productsIdsInCart[this.productsIdsInCart.indexOf(productAlreadyInCart)].quantity;
+
+      if (quantity > 1)
+        this.productsIdsInCart[index].quantity = quantity - 1;
+      else
+        this.productsIdsInCart.splice(index, 1);
     }
+    else
+      console.log("Tried to delete an inexisting product from cart!");
   }
 }

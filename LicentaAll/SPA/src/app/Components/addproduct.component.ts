@@ -14,10 +14,11 @@ export class ProductAddComponent {
 
   addAditionalDetail() {
     var aditionalDetail: Interfaces.IAditionalDetail = {
-      detailDescription: "",
-      detailName: "",
-      detailAuxiliaryId : this.detailNumber + 1
-    }
+      description: "",
+      name: "",
+      id: this.detailNumber + 1,
+      row_version : 0
+  }
     this.aditionalDetails.push(aditionalDetail);
     this.detailNumber = this.detailNumber + 1;
     //this._ref.markForCheck();
