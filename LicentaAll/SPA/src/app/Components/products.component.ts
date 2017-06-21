@@ -5,5 +5,5 @@
   templateUrl: 'app/Templates/products.html'
 })
 export class ProductsComponent {
-  SelectedCategoryName = 'Angular';
+  SelectedCategoryName = 'Selected Category Name';
 }

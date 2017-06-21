@@ -1,13 +1,14 @@
 ﻿import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../Services/AuthService'
+import { AuthService } from '../Services/AuthService';
+import { ShoppingCartService} from '../Services/ShoppingCartService';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: 'app/Templates/navbar.html'
 })
 export class NavbarComponent implements AfterViewInit {
-  constructor(private _AuthService: AuthService, private _router: Router) {
+  constructor(private _AuthService: AuthService, private _router: Router, private _ShoppingCartService: ShoppingCartService) {
   }
 
   public IsAuthenticated() {
@@ -44,5 +45,17 @@ export class NavbarComponent implements AfterViewInit {
 
   public HomeClick() {
     this._router.navigate(['products/add']);
+  }
+
+  public ShoppingCartClick() {
+    this._router.navigate(['shopping-cart']);
+  }
+
+  public numberOfProducts(): number {
+    return this._ShoppingCartService.numberOfProductsInCart;
+  }
+
+  public anyProductsInCart(): boolean {
+    return this._ShoppingCartService.numberOfProductsInCart > 0;
   }
 }

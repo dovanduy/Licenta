@@ -69,16 +69,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <TypeScriptCompile Include="src\app\Components\shoppingcart.component.ts" />
+    <TypeScriptCompile Include="src\app\Services\ProductService.ts" />
+    <TypeScriptCompile Include="src\app\Services\ReviewService.ts" />
+    <TypeScriptCompile Include="src\app\Services\ShoppingCartService.ts" />
     <Content Include="src\app\Templates\addProduct.html" />
     <Content Include="src\app\Templates\app.html" />
     <Content Include="src\app\Templates\auth0callback.html" />
     <Content Include="src\app\Templates\navbar.html" />
     <Content Include="src\app\Templates\productCard.html" />
     <Content Include="src\app\Templates\products.html" />
+    <Content Include="src\app\Templates\shoppingcart.html" />
     <Content Include="src\app\Templates\slide.html" />
     <Content Include="src\app\Templates\slideshow.html" />
     <Content Include="src\app\Templates\styles\navbar.css" />
     <Content Include="src\app\Templates\styles\productcard.css" />
+    <Content Include="src\app\Templates\styles\shoppingcart.css" />
     <Content Include="src\app\Templates\styles\slideshow.css" />
     <Content Include="src\app\Templates\welcome.html" />
     <Content Include="src\assets\images\AYEW.png" />

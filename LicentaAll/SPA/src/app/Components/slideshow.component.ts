@@ -13,21 +13,21 @@ export class SlideshowComponent implements AfterViewInit {
 
   constructor(private ref: ChangeDetectorRef, private _SlideService: SlideService, private _sanitizer: DomSanitizer) {
     this.slides = [
-      {
-        imgSrc: 'http://i.huffpost.com/gen/3866236/images/o-HAPPY-facebook.jpg',
-        state: 'Displayed'
-      },
-      {
-        imgSrc: 'http://growcobusiness.com/wp-content/uploads/2013/06/Electronics.jpg',
-        state: 'NotDisplayed'
-      },
-      {
-        imgSrc: 'http://www.ncl.ac.uk/media/wwwnclacuk/undergraduate/images/courseprofiles/Countryside-Management-BSc-D455-crop.jpg',
-        state: 'NotDisplayed'
-      },
+      //{
+      //  imgSrc: 'http://i.huffpost.com/gen/3866236/images/o-HAPPY-facebook.jpg',
+      //  state: 'Displayed'
+      //},
+      //{
+      //  imgSrc: 'http://growcobusiness.com/wp-content/uploads/2013/06/Electronics.jpg',
+      //  state: 'NotDisplayed'
+      //},
+      //{
+      //  imgSrc: 'http://www.ncl.ac.uk/media/wwwnclacuk/undergraduate/images/courseprofiles/Countryside-Management-BSc-D455-crop.jpg',
+      //  state: 'NotDisplayed'
+      //},
       {
         imgSrc: 'http://hhfinance.nl/wp-content/uploads/Geheimen-achter-succes-echte-ondernemers.jpg',
-        state: 'NotDisplayed'
+        state: 'Displayed'
       },
     ];
     setInterval(() => {
@@ -54,7 +54,7 @@ export class SlideshowComponent implements AfterViewInit {
   }
 
   public hasSlides() :boolean {
-    return this.slides.length > 0;
+    return this.slides.length > 1;
   }
 
   public previousSlide() {

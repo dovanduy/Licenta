@@ -12,25 +12,34 @@ import { SlideComponent } from './Components/slide.component';
 import { ProductsComponent } from './Components/products.component';
 import { ProductCardComponent } from './Components/productcard.component';
 import { ProductAddComponent } from './Components/addproduct.component';
+import { ShoppingCartComponent } from './Components/shoppingcart.component';
 
 import { AuthService } from './Services/AuthService';
 import { SlideService } from './Services/SlideService';
+import { ShoppingCartService } from './Services/ShoppingCartService';
+import { ReviewService } from './Services/ReviewService';
+import { ProductService } from './Services/ProductService';
 
 @NgModule({
-    imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
-        RouterModule.forRoot([
-            { path: 'welcome', component: WelcomeComponent },
-            { path: 'callback', component: AuthZeroCallbackComponent },
-            { path: 'products', component: ProductsComponent },
-            { path: 'products/add', component: ProductAddComponent },
-            { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-        ])
-    ],
-    exports: [RouterModule],
-    declarations: [AppComponent, WelcomeComponent, AuthZeroCallbackComponent, NavbarComponent, SlideshowComponent, SlideComponent, ProductsComponent, ProductCardComponent, ProductAddComponent],
-    providers:    [ AuthService, SlideService ],
-    bootstrap:    [ AppComponent ]
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    RouterModule.forRoot([
+      { path: 'welcome', component: WelcomeComponent },
+      { path: 'callback', component: AuthZeroCallbackComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'products/add', component: ProductAddComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+    ])
+  ],
+  exports: [RouterModule],
+  declarations: [
+    AppComponent, WelcomeComponent, AuthZeroCallbackComponent, NavbarComponent, SlideshowComponent,
+    SlideComponent, ProductsComponent, ProductCardComponent, ProductAddComponent, ShoppingCartComponent
+  ],
+
+  providers: [AuthService, SlideService, ReviewService, ProductService, ShoppingCartService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

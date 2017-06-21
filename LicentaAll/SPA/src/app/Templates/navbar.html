@@ -26,8 +26,18 @@
           <li><a (click)="AboutClick()">About</a></li>
         </ul>
         <ul class='nav navbar-nav navbar-right'>
-          <li><a *ngIf="!IsAuthenticated()" (click)="Login()">Log In</a></li>
           <li><a *ngIf="IsAuthenticated()">Welcome, {{GetProfileName()}}</a></li>
+          <li> <!--shopping cart -->
+            <a (click)="ShoppingCartClick()" class="shopping-cart-link">
+              <div id="shopping-cart-icon" class="shopping-cart-icon-container">
+                <i class="fa fa-shopping-cart shopping-cart-icon" aria-hidden="true"></i>
+                <div *ngIf="anyProductsInCart()" id="shopping-cart-number" class="shopping-cart-number">
+                  <div id="shopping-cart-number-text">{{numberOfProducts()}}</div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li><a *ngIf="!IsAuthenticated()" (click)="Login()">Log In</a></li>
           <li><a *ngIf="IsAuthenticated()" (click)="Logout()">Log Out</a></li>
         </ul>
       </div>
