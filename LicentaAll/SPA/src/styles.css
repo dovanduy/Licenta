@@ -1,5 +1,10 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
+
+@import url('app/Templates/styles/navbar.css');
+@import url('app/Templates/styles/slideshow.css');
+@import url('app/Templates/styles/productcard.css');
+
 h1 {
   color: #369;
   font-family: Arial, Helvetica, sans-serif;
@@ -22,3 +27,36 @@ h1 {
 .size-medium{
     font-size: 30pt;
 }
+#appmaincontainer {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar-functionality-separator {
+  position: relative;
+  top: -80px;
+  height: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+
+#functionalitycontainer {
+  position: relative;
+  top: -70px;
+  -webkit-text-fill-color: white;
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+body {
+  background-image: url(assets/images/background.jpg);
+}
+
+.loading-app-div
+{ -webkit-text-fill-color: white;}
+

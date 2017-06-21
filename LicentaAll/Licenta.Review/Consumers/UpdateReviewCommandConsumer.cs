@@ -6,50 +6,37 @@ using Licenta.Messaging.Messages.Commands;
 using Licenta.Messaging.Messages.Events;
 using Licenta.Review.EntityFramework;
 using Licenta.Review.Messages;
+using Licenta.Review.Services.Interfaces;
 using MassTransit;
 
 namespace Licenta.Review.Consumers
 {
     public class UpdateReviewCommandConsumer : IConsumer<IUpdateReviewCommand>
     {
+        private IReviewService ReviewService;
+
+        public UpdateReviewCommandConsumer(IReviewService reviewService)
+        {
+            ReviewService = reviewService;
+        }
+
         public async Task Consume(ConsumeContext<IUpdateReviewCommand> context)
         {
-            using (ReviewDbContext unitOfWork = new ReviewDbContext())
+            double oldRating = ReviewService.GetProductRating(context.Message.Review.ProductId);
+
+            var editedReview = await ReviewService.UpdateReview(context.Message.Review);
+            await Console.Out.WriteLineAsync($"Review {editedReview.Id} was updated.");
+
+            double newRating = ReviewService.GetProductRating(editedReview.ProductId);
+
+            if (Math.Abs(oldRating - newRating) >= 0.01)
             {
-                var reviewToBeEdited = context.Message.Review;
-                if (unitOfWork.Reviews.Any(x => x.ReviewId == reviewToBeEdited.ReviewId && !x.DeletionDate.HasValue))
-                {
-                    bool ratingChanged = false;
-                    var editedReview = unitOfWork.Reviews.First(x => x.ReviewId == reviewToBeEdited.ReviewId);
-
-                    unitOfWork.Reviews.Attach(editedReview);
-
-                    if (editedReview.Rating != reviewToBeEdited.Rating)
-                    {
-                        ratingChanged = true;
-                        editedReview.Rating = reviewToBeEdited.Rating;
-                    }
-                    editedReview.Text = reviewToBeEdited.Text;
-                    editedReview.UserNickname = reviewToBeEdited.UserNickname;
-
-                    await unitOfWork.SaveChangesAsync();
-                    await Console.Out.WriteLineAsync($"Review {editedReview.ReviewId} was updated.");
-
-                    if (ratingChanged)
-                    {
-                        await context.Publish(CreateProductRatingUpdatedEvent(unitOfWork, editedReview.ProductId));
-                    }
-                }
-                else
-                {
-                    throw new EntityCommandExecutionException($"No review with id {reviewToBeEdited.ReviewId}");
-                }
+                await context.Publish(CreateProductRatingUpdatedEvent(newRating, editedReview.ProductId));
             }
         }
 
-        private IProductRatingUpdatedEvent CreateProductRatingUpdatedEvent(IReviewDbContext unitOfWork, int productId)
+        private IProductRatingUpdatedEvent CreateProductRatingUpdatedEvent(double rating, int productId)
         {
-            double rating = unitOfWork.ProductRatings.First(x => x.ProductId == productId).AverageRating.Value;
             return new ProductRatingUpdatedEvent
             {
                 ProductId = productId,

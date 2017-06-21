@@ -1,0 +1,54 @@
+﻿<div class="product-form-container">
+  <h2 style="text-align: center">Add New Product</h2>
+  <form>
+    <div class="form-group">
+      <label for="productNameInput">Product name:</label>
+      <input type="text" class="form-control" id="productNameInput" placeholder="Name">
+    </div>
+
+    <div class="form-group">
+      <label for="productCategoryInput">Product category:</label>
+      <select id="productCategoryInput" name="categories" class="form-control">
+        <option value="">Category</option>
+        <option value="volvo">Category 1</option>
+        <option value="saab">Category 2</option>
+        <option value="fiat">Category 3</option>
+        <option value="audi">Category 4</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="productDescriptionInput">Product Description:</label>
+      <input type="text" class="form-control" id="productDescriptionInput" placeholder="Description">
+    </div>
+
+    <div class="form-group">
+      <label for="productPriceInput">Product price:</label>
+      <input type="number" class="form-control" id="productPriceInput" placeholder="Price">
+    </div>
+
+    <div class="form-group">
+      <label for="productImageInput">Product price:</label>
+      <input type="url" class="form-control" id="productImageInput" placeholder="Image url">
+    </div>
+
+    <div class="form-group">
+      <h3><a (click)="this.addAditionalDetail()">Aditional Details:
+          <div class="glyphicon glyphicon-plus"></div></a>
+      </h3>
+      <div class="aditional-detail-container" *ngFor="let detail of this.aditionalDetails;let i = index">
+        <div class="form-group">
+          <label class="col-xs-12">Aditional detail number {{i+1}}: <a (click)="this.deleteAditionalDetail(detail)">
+            <div class="glyphicon glyphicon-trash"></div></a></label>
+          <label class="col-xs-12" for="productDetailNameInput{{detail.detailAuxiliaryId}}">Aditional detail name:</label>
+          <input type="text" class="form-control" id="productDetailNameInput{{detail.detailAuxiliaryId}}" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="productDetailInput{{detail.detailAuxiliaryId}}">Aditional detail description:</label>
+          <input type="text" class="form-control" id="productDetailInput{{detail.detailAuxiliaryId}}" placeholder="Details...">
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

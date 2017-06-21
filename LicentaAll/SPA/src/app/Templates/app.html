@@ -1,24 +1,8 @@
-﻿<div>
-    <nav class='navbar navbar-default navbar-static-top'>
-        <div class='container-fluid'>
-            <div class="navbar-header">
-                <a class='navbar-brand'>{{PageTitle}}</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class='nav navbar-nav'>
-                    <li><a>Home</a></li>
-                    <li><a>Products</a></li>
-                    <li><a>About</a></li>
-                </ul>
-                <ul class='nav navbar-nav navbar-right'>
-                    <li><a *ngIf="!IsAuthenticated()" (click)="Login()">Log In</a></li>
-                    <li><a *ngIf="IsAuthenticated()">Welcome, {{GetProfileName()}}</a></li>
-                    <li><a *ngIf="IsAuthenticated()" (click)="Logout()">Log Out</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div>
+﻿<div id="appmaincontainer" class="container-fluid">
+  <app-navbar></app-navbar>
+  <app-slideshow></app-slideshow>
+  <div id="navbar-functionality-separator" class="container-fluid"></div>
+   <div class="container" id="functionalitycontainer">
         <router-outlet></router-outlet>
-    </div>
+   </div>
 </div>

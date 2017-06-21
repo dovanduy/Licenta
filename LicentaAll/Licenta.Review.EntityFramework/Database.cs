@@ -29,11 +29,10 @@
 namespace Licenta.Review.EntityFramework
 {
     using Newtonsoft.Json;
-    using System.Linq;
 
     #region Unit of work
 
-    public interface IReviewDbContext : System.IDisposable
+    public interface IReviewDbContext : Licenta.EntityFramework.UnitOfWork.Interfaces.IDbContext
     {
         System.Data.Entity.DbSet<ProductRating> ProductRatings { get; set; } // ProductRatings
         System.Data.Entity.DbSet<Reaction> Reactions { get; set; } // Reaction
@@ -122,307 +121,6 @@ namespace Licenta.Review.EntityFramework
     }
     #endregion
 
-    #region Fake Database context
-
-    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class FakeReviewDbContext : IReviewDbContext
-    {
-        public System.Data.Entity.DbSet<ProductRating> ProductRatings { get; set; }
-        public System.Data.Entity.DbSet<Reaction> Reactions { get; set; }
-        public System.Data.Entity.DbSet<Review> Reviews { get; set; }
-        public System.Data.Entity.DbSet<ReviewList> ReviewLists { get; set; }
-
-        public FakeReviewDbContext()
-        {
-            ProductRatings = new FakeDbSet<ProductRating>("ProductId");
-            Reactions = new FakeDbSet<Reaction>("ReactionId");
-            Reviews = new FakeDbSet<Review>("ReviewId");
-            ReviewLists = new FakeDbSet<ReviewList>("Rating", "ProductId", "ReviewId", "UserNickname", "UserBoughtProduct");
-        }
-
-        public int SaveChangesCount { get; private set; }
-        public int SaveChanges()
-        {
-            ++SaveChangesCount;
-            return 1;
-        }
-
-        public System.Threading.Tasks.Task<int> SaveChangesAsync()
-        {
-            ++SaveChangesCount;
-            return System.Threading.Tasks.Task<int>.Factory.StartNew(() => 1);
-        }
-
-        public System.Threading.Tasks.Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken)
-        {
-            ++SaveChangesCount;
-            return System.Threading.Tasks.Task<int>.Factory.StartNew(() => 1, cancellationToken);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-        }
-    }
-
-    // ************************************************************************
-    // Fake DbSet
-    // Implementing Find:
-    //      The Find method is difficult to implement in a generic fashion. If
-    //      you need to test code that makes use of the Find method it is
-    //      easiest to create a test DbSet for each of the entity types that
-    //      need to support find. You can then write logic to find that
-    //      particular type of entity, as shown below:
-    //      public class FakeBlogDbSet : FakeDbSet<Blog>
-    //      {
-    //          public override Blog Find(params object[] keyValues)
-    //          {
-    //              var id = (int) keyValues.Single();
-    //              return this.SingleOrDefault(b => b.BlogId == id);
-    //          }
-    //      }
-    //      Read more about it here: https://msdn.microsoft.com/en-us/data/dn314431.aspx
-    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class FakeDbSet<TEntity> : System.Data.Entity.DbSet<TEntity>, IQueryable, System.Collections.Generic.IEnumerable<TEntity>, System.Data.Entity.Infrastructure.IDbAsyncEnumerable<TEntity> where TEntity : class
-    {
-        private readonly System.Reflection.PropertyInfo[] _primaryKeys;
-        private readonly System.Collections.ObjectModel.ObservableCollection<TEntity> _data;
-        private readonly IQueryable _query;
-
-        public FakeDbSet()
-        {
-            _data = new System.Collections.ObjectModel.ObservableCollection<TEntity>();
-            _query = _data.AsQueryable();
-        }
-
-        public FakeDbSet(params string[] primaryKeys)
-        {
-            _primaryKeys = typeof(TEntity).GetProperties().Where(x => primaryKeys.Contains(x.Name)).ToArray();
-            _data = new System.Collections.ObjectModel.ObservableCollection<TEntity>();
-            _query = _data.AsQueryable();
-        }
-
-        public override TEntity Find(params object[] keyValues)
-        {
-            if (_primaryKeys == null)
-                throw new System.ArgumentException("No primary keys defined");
-            if (keyValues.Length != _primaryKeys.Length)
-                throw new System.ArgumentException("Incorrect number of keys passed to Find method");
-
-            var keyQuery = this.AsQueryable();
-            keyQuery = keyValues
-                .Select((t, i) => i)
-                .Aggregate(keyQuery,
-                    (current, x) =>
-                        current.Where(entity => _primaryKeys[x].GetValue(entity, null).Equals(keyValues[x])));
-
-            return keyQuery.SingleOrDefault();
-        }
-
-        public override System.Threading.Tasks.Task<TEntity> FindAsync(System.Threading.CancellationToken cancellationToken, params object[] keyValues)
-        {
-            return System.Threading.Tasks.Task<TEntity>.Factory.StartNew(() => Find(keyValues), cancellationToken);
-        }
-
-        public override System.Threading.Tasks.Task<TEntity> FindAsync(params object[] keyValues)
-        {
-            return System.Threading.Tasks.Task<TEntity>.Factory.StartNew(() => Find(keyValues));
-        }
-
-        public override System.Collections.Generic.IEnumerable<TEntity> AddRange(System.Collections.Generic.IEnumerable<TEntity> entities)
-        {
-            if (entities == null) throw new System.ArgumentNullException("entities");
-            var items = entities.ToList();
-            foreach (var entity in items)
-            {
-                _data.Add(entity);
-            }
-            return items;
-        }
-
-        public override TEntity Add(TEntity item)
-        {
-            if (item == null) throw new System.ArgumentNullException("item");
-            _data.Add(item);
-            return item;
-        }
-
-        public override System.Collections.Generic.IEnumerable<TEntity> RemoveRange(System.Collections.Generic.IEnumerable<TEntity> entities)
-        {
-            if (entities == null) throw new System.ArgumentNullException("entities");
-            var items = entities.ToList();
-            foreach (var entity in items)
-            {
-                _data.Remove(entity);
-            }
-            return items;
-        }
-
-        public override TEntity Remove(TEntity item)
-        {
-            if (item == null) throw new System.ArgumentNullException("item");
-            _data.Remove(item);
-            return item;
-        }
-
-        public override TEntity Attach(TEntity item)
-        {
-            if (item == null) throw new System.ArgumentNullException("item");
-            _data.Add(item);
-            return item;
-        }
-
-        public override TEntity Create()
-        {
-            return System.Activator.CreateInstance<TEntity>();
-        }
-
-        public override TDerivedEntity Create<TDerivedEntity>()
-        {
-            return System.Activator.CreateInstance<TDerivedEntity>();
-        }
-
-        public override System.Collections.ObjectModel.ObservableCollection<TEntity> Local
-        {
-            get { return _data; }
-        }
-
-        System.Type IQueryable.ElementType
-        {
-            get { return _query.ElementType; }
-        }
-
-        System.Linq.Expressions.Expression IQueryable.Expression
-        {
-            get { return _query.Expression; }
-        }
-
-        IQueryProvider IQueryable.Provider
-        {
-            get { return new FakeDbAsyncQueryProvider<TEntity>(_query.Provider); }
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _data.GetEnumerator();
-        }
-
-        System.Collections.Generic.IEnumerator<TEntity> System.Collections.Generic.IEnumerable<TEntity>.GetEnumerator()
-        {
-            return _data.GetEnumerator();
-        }
-
-        System.Data.Entity.Infrastructure.IDbAsyncEnumerator<TEntity> System.Data.Entity.Infrastructure.IDbAsyncEnumerable<TEntity>.GetAsyncEnumerator()
-        {
-            return new FakeDbAsyncEnumerator<TEntity>(_data.GetEnumerator());
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class FakeDbAsyncQueryProvider<TEntity> : System.Data.Entity.Infrastructure.IDbAsyncQueryProvider
-    {
-        private readonly IQueryProvider _inner;
-
-        public FakeDbAsyncQueryProvider(IQueryProvider inner)
-        {
-            _inner = inner;
-        }
-
-        public IQueryable CreateQuery(System.Linq.Expressions.Expression expression)
-        {
-            return new FakeDbAsyncEnumerable<TEntity>(expression);
-        }
-
-        public IQueryable<TElement> CreateQuery<TElement>(System.Linq.Expressions.Expression expression)
-        {
-            return new FakeDbAsyncEnumerable<TElement>(expression);
-        }
-
-        public object Execute(System.Linq.Expressions.Expression expression)
-        {
-            return _inner.Execute(expression);
-        }
-
-        public TResult Execute<TResult>(System.Linq.Expressions.Expression expression)
-        {
-            return _inner.Execute<TResult>(expression);
-        }
-
-        public System.Threading.Tasks.Task<object> ExecuteAsync(System.Linq.Expressions.Expression expression, System.Threading.CancellationToken cancellationToken)
-        {
-            return System.Threading.Tasks.Task.FromResult(Execute(expression));
-        }
-
-        public System.Threading.Tasks.Task<TResult> ExecuteAsync<TResult>(System.Linq.Expressions.Expression expression, System.Threading.CancellationToken cancellationToken)
-        {
-            return System.Threading.Tasks.Task.FromResult(Execute<TResult>(expression));
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class FakeDbAsyncEnumerable<T> : EnumerableQuery<T>, System.Data.Entity.Infrastructure.IDbAsyncEnumerable<T>, IQueryable<T>
-    {
-        public FakeDbAsyncEnumerable(System.Collections.Generic.IEnumerable<T> enumerable)
-            : base(enumerable)
-        { }
-
-        public FakeDbAsyncEnumerable(System.Linq.Expressions.Expression expression)
-            : base(expression)
-        { }
-
-        public System.Data.Entity.Infrastructure.IDbAsyncEnumerator<T> GetAsyncEnumerator()
-        {
-            return new FakeDbAsyncEnumerator<T>(this.AsEnumerable().GetEnumerator());
-        }
-
-        System.Data.Entity.Infrastructure.IDbAsyncEnumerator System.Data.Entity.Infrastructure.IDbAsyncEnumerable.GetAsyncEnumerator()
-        {
-            return GetAsyncEnumerator();
-        }
-
-        IQueryProvider IQueryable.Provider
-        {
-            get { return new FakeDbAsyncQueryProvider<T>(this); }
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class FakeDbAsyncEnumerator<T> : System.Data.Entity.Infrastructure.IDbAsyncEnumerator<T>
-    {
-        private readonly System.Collections.Generic.IEnumerator<T> _inner;
-
-        public FakeDbAsyncEnumerator(System.Collections.Generic.IEnumerator<T> inner)
-        {
-            _inner = inner;
-        }
-
-        public void Dispose()
-        {
-            _inner.Dispose();
-        }
-
-        public System.Threading.Tasks.Task<bool> MoveNextAsync(System.Threading.CancellationToken cancellationToken)
-        {
-            return System.Threading.Tasks.Task.FromResult(_inner.MoveNext());
-        }
-
-        public T Current
-        {
-            get { return _inner.Current; }
-        }
-
-        object System.Data.Entity.Infrastructure.IDbAsyncEnumerator.Current
-        {
-            get { return Current; }
-        }
-    }
-
-    #endregion
-
     #region POCO classes
 
     // ProductRatings
@@ -435,23 +133,30 @@ namespace Licenta.Review.EntityFramework
 
     // Reaction
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class Reaction
+    public class Reaction: Licenta.EntityFramework.IMaintainableEntity
     {
-        public int ReactionId { get; set; } // ReactionId (Primary key)
+        public int Id { get; set; } // Id (Primary key)
         public bool? Reaction_ { get; set; } // Reaction
         public string UserId { get; set; } // UserId (length: 100)
         public int ReviewId { get; set; } // ReviewId
+        public System.DateTime? DateDeleted { get; set; } // Date_Deleted
+        public int RowVersion { get; set; } // Row_Version
 
         // Foreign keys
         [JsonIgnore]
         public virtual Review Review { get; set; } // FK_Reaction_Review
+
+        public Reaction()
+        {
+            RowVersion = 1;
+        }
     }
 
     // Review
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class Review
+    public class Review: Licenta.EntityFramework.IMaintainableEntity
     {
-        public int ReviewId { get; set; } // ReviewId (Primary key)
+        public int Id { get; set; } // Id (Primary key)
         public int ProductId { get; set; } // ProductId
         public string UserId { get; set; } // UserId (length: 100)
         public byte Rating { get; set; } // Rating
@@ -459,7 +164,8 @@ namespace Licenta.Review.EntityFramework
         public bool UserBoughtProduct { get; set; } // UserBoughtProduct
         public string UserNickname { get; set; } // UserNickname (length: 100)
         public bool ProductDeleted { get; set; } // ProductDeleted
-        public System.DateTime? DeletionDate { get; set; } // Deletion_Date
+        public System.DateTime? DateDeleted { get; set; } // Date_Deleted
+        public int RowVersion { get; set; } // Row_Version
 
         // Reverse navigation
         public virtual System.Collections.Generic.ICollection<Reaction> Reactions { get; set; } // Reaction.FK_Reaction_Review
@@ -467,6 +173,7 @@ namespace Licenta.Review.EntityFramework
         public Review()
         {
             ProductDeleted = false;
+            RowVersion = 1;
             Reactions = new System.Collections.Generic.List<Reaction>();
         }
     }
@@ -520,12 +227,14 @@ namespace Licenta.Review.EntityFramework
         public ReactionConfiguration(string schema)
         {
             ToTable("Reaction", schema);
-            HasKey(x => x.ReactionId);
+            HasKey(x => x.Id);
 
-            Property(x => x.ReactionId).HasColumnName(@"ReactionId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.Id).HasColumnName(@"Id").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.Reaction_).HasColumnName(@"Reaction").IsOptional().HasColumnType("bit");
             Property(x => x.UserId).HasColumnName(@"UserId").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(100);
             Property(x => x.ReviewId).HasColumnName(@"ReviewId").IsRequired().HasColumnType("int");
+            Property(x => x.DateDeleted).HasColumnName(@"Date_Deleted").IsOptional().HasColumnType("date");
+            Property(x => x.RowVersion).HasColumnName(@"Row_Version").IsRequired().HasColumnType("int");
 
             // Foreign keys
             HasRequired(a => a.Review).WithMany(b => b.Reactions).HasForeignKey(c => c.ReviewId).WillCascadeOnDelete(false); // FK_Reaction_Review
@@ -544,9 +253,9 @@ namespace Licenta.Review.EntityFramework
         public ReviewConfiguration(string schema)
         {
             ToTable("Review", schema);
-            HasKey(x => x.ReviewId);
+            HasKey(x => x.Id);
 
-            Property(x => x.ReviewId).HasColumnName(@"ReviewId").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
+            Property(x => x.Id).HasColumnName(@"Id").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(x => x.ProductId).HasColumnName(@"ProductId").IsRequired().HasColumnType("int");
             Property(x => x.UserId).HasColumnName(@"UserId").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(100);
             Property(x => x.Rating).HasColumnName(@"Rating").IsRequired().HasColumnType("tinyint");
@@ -554,7 +263,8 @@ namespace Licenta.Review.EntityFramework
             Property(x => x.UserBoughtProduct).HasColumnName(@"UserBoughtProduct").IsRequired().HasColumnType("bit");
             Property(x => x.UserNickname).HasColumnName(@"UserNickname").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(100);
             Property(x => x.ProductDeleted).HasColumnName(@"ProductDeleted").IsRequired().HasColumnType("bit");
-            Property(x => x.DeletionDate).HasColumnName(@"Deletion_Date").IsOptional().HasColumnType("date");
+            Property(x => x.DateDeleted).HasColumnName(@"Date_Deleted").IsOptional().HasColumnType("date");
+            Property(x => x.RowVersion).HasColumnName(@"Row_Version").IsRequired().HasColumnType("int");
         }
     }
 

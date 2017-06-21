@@ -69,11 +69,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="src\app\Templates\addProduct.html" />
     <Content Include="src\app\Templates\app.html" />
     <Content Include="src\app\Templates\auth0callback.html" />
+    <Content Include="src\app\Templates\navbar.html" />
+    <Content Include="src\app\Templates\productCard.html" />
+    <Content Include="src\app\Templates\products.html" />
+    <Content Include="src\app\Templates\slide.html" />
+    <Content Include="src\app\Templates\slideshow.html" />
+    <Content Include="src\app\Templates\styles\navbar.css" />
+    <Content Include="src\app\Templates\styles\productcard.css" />
+    <Content Include="src\app\Templates\styles\slideshow.css" />
     <Content Include="src\app\Templates\welcome.html" />
+    <Content Include="src\assets\images\AYEW.png" />
+    <Content Include="src\assets\images\background.jpg" />
     <Content Include="src\tsconfig.json" />
     <Content Include="package.json" />
+    <Content Include="src\assets\fonts\perspire.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -92,14 +104,26 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\Components\addproduct.component.ts" />
     <TypeScriptCompile Include="src\app\Components\app.component.ts" />
     <TypeScriptCompile Include="src\app\Components\authZeroCallback.component.ts" />
+    <TypeScriptCompile Include="src\app\Components\navbar.component.ts" />
+    <TypeScriptCompile Include="src\app\Components\productcard.component.ts" />
+    <TypeScriptCompile Include="src\app\Components\products.component.ts" />
+    <TypeScriptCompile Include="src\app\Components\ratingdisplay.component.ts" />
+    <TypeScriptCompile Include="src\app\Components\slide.component.ts" />
+    <TypeScriptCompile Include="src\app\Components\slideshow.component.ts" />
     <TypeScriptCompile Include="src\app\Components\welcome.component.ts" />
+    <TypeScriptCompile Include="src\app\Interfaces\Interfaces.ts" />
     <TypeScriptCompile Include="src\app\Services\AuthService.ts" />
+    <TypeScriptCompile Include="src\app\Services\SlideService.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\assets\images\slideshowTest\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

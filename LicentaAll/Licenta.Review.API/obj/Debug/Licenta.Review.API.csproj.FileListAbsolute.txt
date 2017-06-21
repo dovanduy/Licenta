@@ -30,3 +30,10 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\bin\Entit
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\obj\Debug\Licenta.Review.API.csprojResolveAssemblyReference.cache
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\obj\Debug\Licenta.Review.API.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\obj\Debug\Licenta.Review.API.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\bin\Licenta.EntityFramework.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\bin\Microsoft.Practices.Unity.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\bin\Licenta.EntityFramework.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\bin\Microsoft.Practices.Unity.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Review.API\bin\Microsoft.Practices.ServiceLocation.xml

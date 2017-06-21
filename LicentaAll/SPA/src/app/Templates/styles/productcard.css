@@ -1,0 +1,68 @@
+﻿.product-card-container {
+  margin: 0;
+  padding: 5px;
+
+}
+
+.product-card {
+  border-style: solid;
+  border-radius: 20px;
+  border-color: grey;
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 0;
+}
+
+.product-card-image {
+  width: 100%;
+  height: 151px;
+  border-style: solid;
+  border-radius: 18px;
+  border-width: 0;
+  border-color: grey;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+
+.product-card-text-container {
+  text-align: center;
+  -webkit-text-fill-color: black;
+}
+
+.product-card-text-container>h4 {
+  cursor: pointer;
+}
+
+.product-search-input {
+  float: right;
+  width: 50%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  -webkit-text-fill-color: black;
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .product-search-input { width: 50% }
+}
+
+@media (max-width: 992px) {
+  .product-search-input { width: 100% }
+}
+
+.form-control {
+  -webkit-text-fill-color: black;
+}
+
+.product-form-container {
+  background: white;
+  -webkit-text-fill-color: black;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  padding: 5px;
+  border-radius: 10px;
+}

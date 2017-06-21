@@ -1,0 +1,94 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Gruppo');
+
+@media (min-width: 420px) {
+  .navbar-brand>.navbar-toggle{font-size: 16px;}
+}
+
+@media (max-width: 419px) {
+  .navbar-brand>.navbar-toggle{font-size: 7px;}
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+  .navbar-brand > #logodiv {width: 200px;}
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar-brand > #logodiv {width: 150px;}
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar-brand > #logodiv {width: 100px;}
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 768px) {
+  .navbar-brand > #logodiv {width: 75px;}
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .navbar-brand > #logodiv {width: 50px;}
+}
+/*
+.navbar-default{
+  background:transparent;
+  background-image:none;
+  border-color:transparent;
+  box-shadow:none;
+}*/
+
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>#logodiv>img {
+  height: auto;
+  padding: 15px;
+  width: 100%;
+}
+
+.navbar-brand>#logodiv {
+  height: 100%;
+  padding: 0;
+}
+
+
+.navbar-brand>.navbar-toggle {
+  border-style: none;
+  font-family: 'Gruppo', cursive;
+  -webkit-text-fill-color: whitesmoke;
+}
+
+.brand-centered {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.brand-centered .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-toggle {
+  z-index: 1;
+}
+
+.navbar-brand-centered {
+  position: absolute;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px; /* Half the width */
+  padding: 0;
+}
+
+.navbar-container {
+  padding: 0;
+}
+.navbar>.container-fluid {
+  padding: 0;
+}

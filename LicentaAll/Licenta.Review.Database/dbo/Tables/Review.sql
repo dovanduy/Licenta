@@ -8,5 +8,6 @@
     [UserNickname]      VARCHAR (100)  NOT NULL,
     [ProductDeleted]    BIT            CONSTRAINT [DF_Review_ProductDeleted] DEFAULT ((0)) NOT NULL,
     [Date_Deleted] DATE NULL, 
+    [Row_Version] INT NOT NULL DEFAULT 1, 
 );
 

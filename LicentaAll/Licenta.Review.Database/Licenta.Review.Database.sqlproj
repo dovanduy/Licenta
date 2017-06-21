@@ -125,10 +125,6 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
-    <Build Include="dbo\Views\ProductRatings.sql">
-      <AnsiNulls>On</AnsiNulls>
-      <QuotedIdentifier>On</QuotedIdentifier>
-    </Build>
   </ItemGroup>
   <ItemGroup>
     <None Include="Licenta.Review.Database.publish.xml" />

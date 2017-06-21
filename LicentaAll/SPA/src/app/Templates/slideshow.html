@@ -1,0 +1,11 @@
+﻿<!-- 
+<div id="slideshowcontainer" class="container-fluid">
+  <slide-component *ngFor="let slide of this.slides; let i = index" [state]="slide.state" [imgSrc]="slide.imgSrc" [order]="-i-1"></slide-component>
+</div>
+-->
+
+<div id="slideshowcontainer">
+  <div class="my-slide-container" *ngFor="let slide of this.slides;let i = index">
+    <div class="my-slide" *ngIf="slide.state === 'Displayed'" [style.background-image]="_sanitizer.bypassSecurityTrustStyle('url(' + slide.imgSrc + ')')" [style.z-index]="-i-1"></div>
+  </div>
+</div>

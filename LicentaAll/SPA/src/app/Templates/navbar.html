@@ -1,0 +1,38 @@
+﻿<div class="container navbar-container">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar9">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="brand-centered">
+        <a class="navbar-brand" href="">
+          <div id="logodiv" class="d-flex">
+            <img class="p-2" style="padding: 0;" src="../../assets/images/AYEW.png" alt="AYEW">
+          </div>
+          <div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar9">Anything you've ever wanted</div>
+        </a>
+      </div>
+
+      <div id="navbar9" class="navbar-collapse collapse">
+        <ul class='nav navbar-nav'>
+          <li><a (click)="HomeClick()">Home</a></li>
+          <li><a (click)="ProductsClick()">Products</a></li>
+          <li><a (click)="AboutClick()">About</a></li>
+        </ul>
+        <ul class='nav navbar-nav navbar-right'>
+          <li><a *ngIf="!IsAuthenticated()" (click)="Login()">Log In</a></li>
+          <li><a *ngIf="IsAuthenticated()">Welcome, {{GetProfileName()}}</a></li>
+          <li><a *ngIf="IsAuthenticated()" (click)="Logout()">Log Out</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+</div>

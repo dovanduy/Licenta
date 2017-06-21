@@ -6,41 +6,33 @@ using Licenta.Messaging.Messages.Commands;
 using Licenta.Messaging.Messages.Events;
 using Licenta.Review.EntityFramework;
 using Licenta.Review.Messages;
+using Licenta.Review.Services.Interfaces;
 using MassTransit;
 
 namespace Licenta.Review.Consumers
 {
     class DeleteReviewCommandConsumer : IConsumer<IDeleteReviewCommand>
     {
-        public async Task Consume(ConsumeContext<IDeleteReviewCommand> context)
+        private IReviewService ReviewService;
+
+        public DeleteReviewCommandConsumer(IReviewService reviewService)
         {
-            using (ReviewDbContext unitOfWork = new ReviewDbContext())
-            {
-                var reviewToBeDeleted = context.Message.ReviewId;
-                if (unitOfWork.Reviews.Any(x => x.ReviewId == reviewToBeDeleted))
-                {
-                    var deletedReview = unitOfWork.Reviews.First(x => x.ReviewId == reviewToBeDeleted);
-
-                    unitOfWork.Reviews.Attach(deletedReview);
-                    deletedReview.DeletionDate = DateTime.Now;
-
-                    await unitOfWork.SaveChangesAsync();
-                    await Console.Out.WriteLineAsync($"Review {deletedReview.ReviewId} was deleted.");
-
-                    await context.Publish(CreateProductRatingUpdatedEvent(unitOfWork, deletedReview.ProductId));
-                }
-                else
-                {
-                    throw new EntityCommandExecutionException($"Review {reviewToBeDeleted} does not exist.");
-                }
-            }
-
-
+            ReviewService = reviewService;
         }
 
-        private IProductRatingUpdatedEvent CreateProductRatingUpdatedEvent(IReviewDbContext unitOfWork, int productId)
+        public async Task Consume(ConsumeContext<IDeleteReviewCommand> context)
         {
-            double rating = unitOfWork.ProductRatings.First(x => x.ProductId == productId).AverageRating.Value;
+            var deletedReviewProductId = await ReviewService.DeleteReview(context.Message.ReviewId);
+
+            await Console.Out.WriteLineAsync($"Review {context.Message.ReviewId} was deleted.");
+
+            await context.Publish(
+                CreateProductRatingUpdatedEvent(ReviewService.GetProductRating(deletedReviewProductId),
+                                                 deletedReviewProductId));
+        }
+
+        private IProductRatingUpdatedEvent CreateProductRatingUpdatedEvent(double rating, int productId)
+        {
             return new ProductRatingUpdatedEvent
             {
                 ProductId = productId,

@@ -1,0 +1,58 @@
+﻿.my-slide {
+  position: absolute;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#slideshowcontainer {
+  position: relative;
+  top: -80px;
+  width: 100%;
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+}
+
+.my-slide-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+  #slideshowcontainer {height: 400px;}
+  .my-slide { height: 400px; }
+  .my-slide-contaner { height: 400px; }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  #slideshowcontainer {height: 400px;}
+  .my-slide { height: 400px; }
+  .my-slide-contaner { height: 400px; }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  #slideshowcontainer {height: 300px;}
+  .my-slide { height: 300px; }
+  .my-slide-contaner { height: 300px; }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 768px) {
+  #slideshowcontainer {height: 200px;}
+  .my-slide { height: 200px; }
+  .my-slide-contaner { height: 200px; }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  #slideshowcontainer {height: 150px;}
+  .my-slide { height: 150px; }
+  .my-slide-contaner { height: 150px; }
+}

@@ -8,11 +8,13 @@ using Licenta.Messaging.Generic;
 
 namespace Licenta.Review
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
             Console.Title = "Review";
+
+            var container = CreateContainer();
 
             var bus = BusConfigurator.ConfigureBus((cfg, host) =>
             {
@@ -20,28 +22,28 @@ namespace Licenta.Review
                     e =>
                     {
                         e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                        e.Consumer<AddReviewCommandConsumer>();
+                        e.Consumer<AddReviewCommandConsumer>(container);
                     });
 
                 cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".review.update",
                     e =>
                     {
                         e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                        e.Consumer<UpdateReviewCommandConsumer>();
+                        e.Consumer<UpdateReviewCommandConsumer>(container);
                     });
 
                 cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".review.delete",
                     e =>
                     {
                         e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                        e.Consumer<DeleteReviewCommandConsumer>();
+                        e.Consumer<DeleteReviewCommandConsumer>(container);
                     });
 
                 cfg.ReceiveEndpoint(host, RabbitMqConstants.ReviewServiceQueue + ".product.deleted",
                     e =>
                     {
                         e.UseRetry(retryCfg => { retryCfg.Immediate(5); });
-                        e.Consumer<ProductDeletedEventConsumer>();
+                        e.Consumer<ProductDeletedEventConsumer>(container);
                     });
             });
 
