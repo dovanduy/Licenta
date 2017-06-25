@@ -28,6 +28,22 @@
   cursor: pointer;
 }
 
+.product-card-price {
+  padding: 0;
+}
+
+#category-title {
+  margin-bottom: 1em;
+}
+
+#category-title-mobile {
+  margin-bottom: 8px;
+}
+
+#product-card-description {
+  padding: 0;
+  font-size: smaller;
+}
 
 .product-card-text-container {
   text-align: center;

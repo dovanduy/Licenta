@@ -1,0 +1,5 @@
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\ApiContracts\bin\Debug\ApiContracts.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\ApiContracts\bin\Debug\ApiContracts.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\ApiContracts\obj\Debug\ApiContracts.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\ApiContracts\obj\Debug\ApiContracts.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaMonolith\ApiContracts\obj\Debug\ApiContracts.pdb

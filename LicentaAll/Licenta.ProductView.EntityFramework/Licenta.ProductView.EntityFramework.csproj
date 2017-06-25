@@ -79,6 +79,12 @@
     <None Include="EF.Reverse.POCO.ttinclude" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Licenta.EntityFramework\Licenta.EntityFramework.csproj">
+      <Project>{e974378b-ec58-4a02-8c93-a0aaa78e1506}</Project>
+      <Name>Licenta.EntityFramework</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

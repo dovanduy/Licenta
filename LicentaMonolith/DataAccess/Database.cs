@@ -36,6 +36,7 @@ namespace DataAccess
     {
         System.Data.Entity.DbSet<AditionalDetail> AditionalDetails { get; set; } // AditionalDetails
         System.Data.Entity.DbSet<Category> Categories { get; set; } // Category
+        System.Data.Entity.DbSet<Inventory> Inventories { get; set; } // Inventory
         System.Data.Entity.DbSet<Product> Products { get; set; } // Product
         System.Data.Entity.DbSet<Reaction> Reactions { get; set; } // Reaction
         System.Data.Entity.DbSet<Review> Reviews { get; set; } // Review
@@ -56,6 +57,7 @@ namespace DataAccess
     {
         public System.Data.Entity.DbSet<AditionalDetail> AditionalDetails { get; set; } // AditionalDetails
         public System.Data.Entity.DbSet<Category> Categories { get; set; } // Category
+        public System.Data.Entity.DbSet<Inventory> Inventories { get; set; } // Inventory
         public System.Data.Entity.DbSet<Product> Products { get; set; } // Product
         public System.Data.Entity.DbSet<Reaction> Reactions { get; set; } // Reaction
         public System.Data.Entity.DbSet<Review> Reviews { get; set; } // Review
@@ -112,6 +114,7 @@ namespace DataAccess
 
             modelBuilder.Configurations.Add(new AditionalDetailConfiguration());
             modelBuilder.Configurations.Add(new CategoryConfiguration());
+            modelBuilder.Configurations.Add(new InventoryConfiguration());
             modelBuilder.Configurations.Add(new ProductConfiguration());
             modelBuilder.Configurations.Add(new ReactionConfiguration());
             modelBuilder.Configurations.Add(new ReviewConfiguration());
@@ -123,6 +126,7 @@ namespace DataAccess
         {
             modelBuilder.Configurations.Add(new AditionalDetailConfiguration(schema));
             modelBuilder.Configurations.Add(new CategoryConfiguration(schema));
+            modelBuilder.Configurations.Add(new InventoryConfiguration(schema));
             modelBuilder.Configurations.Add(new ProductConfiguration(schema));
             modelBuilder.Configurations.Add(new ReactionConfiguration(schema));
             modelBuilder.Configurations.Add(new ReviewConfiguration(schema));
@@ -177,6 +181,28 @@ namespace DataAccess
         }
     }
 
+    // Inventory
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
+    public class Inventory: Contracts.DataAccess.IMaintainableEntity
+    {
+        public int Id { get; set; } // Id (Primary key)
+        public int ProductId { get; set; } // ProductId
+        public int RowVersion { get; set; } // Row_Version
+        public System.DateTime? DateDeleted { get; set; } // Date_Deleted
+        public int WarehouseNumber { get; set; } // WarehouseNumber
+        public int AreaCode { get; set; } // AreaCode
+        public int ShelveNumber { get; set; } // ShelveNumber
+
+        // Foreign keys
+        [JsonIgnore]
+        public virtual Product Product { get; set; } // FK_Inventory_Product
+
+        public Inventory()
+        {
+            RowVersion = 1;
+        }
+    }
+
     // Product
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
     public class Product: Contracts.DataAccess.IMaintainableEntity
@@ -188,10 +214,11 @@ namespace DataAccess
         public int RowVersion { get; set; } // Row_Version
         public System.DateTime? DateDeleted { get; set; } // Date_Deleted
         public decimal Price { get; set; } // Price
-        public int Inventory { get; set; } // Inventory
+        public string ImageUrl { get; set; } // ImageUrl (length: 500)
 
         // Reverse navigation
         public virtual System.Collections.Generic.ICollection<AditionalDetail> AditionalDetails { get; set; } // AditionalDetails.FK_AditionalDetails_Products
+        public virtual System.Collections.Generic.ICollection<Inventory> Inventories { get; set; } // Inventory.FK_Inventory_Product
         public virtual System.Collections.Generic.ICollection<Review> Reviews { get; set; } // Review.FK_Review_Product
         public virtual System.Collections.Generic.ICollection<Sale> Sales { get; set; } // Sale.FK_Sale_Product
 
@@ -202,8 +229,8 @@ namespace DataAccess
         public Product()
         {
             RowVersion = 1;
-            Inventory = 0;
             AditionalDetails = new System.Collections.Generic.List<AditionalDetail>();
+            Inventories = new System.Collections.Generic.List<Inventory>();
             Reviews = new System.Collections.Generic.List<Review>();
             Sales = new System.Collections.Generic.List<Sale>();
         }
@@ -357,6 +384,33 @@ namespace DataAccess
         }
     }
 
+    // Inventory
+    [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
+    public class InventoryConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Inventory>
+    {
+        public InventoryConfiguration()
+            : this("dbo")
+        {
+        }
+
+        public InventoryConfiguration(string schema)
+        {
+            ToTable("Inventory", schema);
+            HasKey(x => x.Id);
+
+            Property(x => x.Id).HasColumnName(@"Id").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
+            Property(x => x.ProductId).HasColumnName(@"ProductId").IsRequired().HasColumnType("int");
+            Property(x => x.RowVersion).HasColumnName(@"Row_Version").IsRequired().HasColumnType("int");
+            Property(x => x.DateDeleted).HasColumnName(@"Date_Deleted").IsOptional().HasColumnType("date");
+            Property(x => x.WarehouseNumber).HasColumnName(@"WarehouseNumber").IsRequired().HasColumnType("int");
+            Property(x => x.AreaCode).HasColumnName(@"AreaCode").IsRequired().HasColumnType("int");
+            Property(x => x.ShelveNumber).HasColumnName(@"ShelveNumber").IsRequired().HasColumnType("int");
+
+            // Foreign keys
+            HasRequired(a => a.Product).WithMany(b => b.Inventories).HasForeignKey(c => c.ProductId).WillCascadeOnDelete(false); // FK_Inventory_Product
+        }
+    }
+
     // Product
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
     public class ProductConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Product>
@@ -378,7 +432,7 @@ namespace DataAccess
             Property(x => x.RowVersion).HasColumnName(@"Row_Version").IsRequired().HasColumnType("int");
             Property(x => x.DateDeleted).HasColumnName(@"Date_Deleted").IsOptional().HasColumnType("date");
             Property(x => x.Price).HasColumnName(@"Price").IsRequired().HasColumnType("money").HasPrecision(19,4);
-            Property(x => x.Inventory).HasColumnName(@"Inventory").IsRequired().HasColumnType("int");
+            Property(x => x.ImageUrl).HasColumnName(@"ImageUrl").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
 
             // Foreign keys
             HasRequired(a => a.Category).WithMany(b => b.Products).HasForeignKey(c => c.CategoryId).WillCascadeOnDelete(false); // FK_Product_Category

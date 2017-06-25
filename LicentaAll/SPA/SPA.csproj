@@ -91,7 +91,6 @@
     <Content Include="src\assets\images\background.jpg" />
     <Content Include="src\tsconfig.json" />
     <Content Include="package.json" />
-    <Content Include="src\assets\fonts\perspire.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

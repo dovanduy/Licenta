@@ -4,32 +4,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Licenta.Messaging.Messages.Events;
 using Licenta.ProductView.EntityFramework;
+using Licenta.ProductView.Services.Interfaces;
 using MassTransit;
 
 namespace Licenta.ProductView.Consumers
 {
     public class ProductRatingUpdatedEventConsumer : IConsumer<IProductRatingUpdatedEvent> 
     {
+        private IProductService _productService;
+
+        public ProductRatingUpdatedEventConsumer(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         public async Task Consume(ConsumeContext<IProductRatingUpdatedEvent> context)
         {
-            using (ProductViewDbContext unitOfWork = new ProductViewDbContext())
-            {
-                var updatedProductId = context.Message.ProductId;
+            var productId = context.Message.ProductId;
+            var updatedRating = context.Message.Rating;
 
-                if (unitOfWork.Products.Any(x => x.ProductId == updatedProductId))
-                {
-                    var productToEdit = unitOfWork.Products.First(x => x.ProductId == updatedProductId);
-                    unitOfWork.Products.Attach(productToEdit);
-                    productToEdit.Rating = Convert.ToDecimal(context.Message.Rating);
-
-                    await unitOfWork.SaveChangesAsync();
-                    await Console.Out.WriteLineAsync($"Product {updatedProductId} price was changed.");
-                }
-                else
-                {
-                    throw new EntityCommandExecutionException($"No product with id {updatedProductId}");
-                }
-            }
+            var updatedProduct = _productService.UpdateProduct(productId, price: Convert.ToDecimal(updatedRating));
+            await Console.Out.WriteLineAsync($"Product {updatedProduct.Id} inventory was changed.");
         }
     }
 }

@@ -10,3 +10,10 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFr
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\obj\Debug\Licenta.ProductView.EntityFramework.csprojResolveAssemblyReference.cache
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\obj\Debug\Licenta.ProductView.EntityFramework.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\obj\Debug\Licenta.ProductView.EntityFramework.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\bin\Debug\Licenta.EntityFramework.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\bin\Debug\Licenta.EntityFramework.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\bin\Debug\Microsoft.Practices.Unity.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView.EntityFramework\bin\Debug\Microsoft.Practices.ServiceLocation.xml

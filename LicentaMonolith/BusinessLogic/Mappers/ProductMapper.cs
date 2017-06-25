@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Contracts.ApiDtos;
+using ApiContracts.Dtos;
 using DataAccess;
 
 namespace BusinessLogic.Mappers
@@ -14,7 +14,6 @@ namespace BusinessLogic.Mappers
                 RowVersion = dto.RowVersion ?? 1,
                 CategoryId = dto.CategoryId,
                 Description = dto.Description,
-                Inventory = dto.Inventory,
                 Name = dto.Name,
                 Price = dto.Price
             };
@@ -28,7 +27,7 @@ namespace BusinessLogic.Mappers
                 RowVersion = dto.RowVersion,
                 CategoryId = dto.CategoryId,
                 Description = dto.Description,
-                Inventory = dto.Inventory,
+                Inventory = int.MinValue,
                 Name = dto.Name,
                 Price = dto.Price
             };

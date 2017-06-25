@@ -35,15 +35,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Review", "Review", "{4836A2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Review", "Licenta.Review\Licenta.Review.csproj", "{10A2C989-8A5A-4D88-8A53-15A6B336FB0F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inventory", "Inventory", "{4405263C-9447-45D1-ADEF-D428665F6647}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Warehouse", "Warehouse", "{4405263C-9447-45D1-ADEF-D428665F6647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Inventory", "Licenta.Inventory\Licenta.Inventory.csproj", "{2053C42A-4CB7-44E8-9310-20F0577231D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Warehouse", "Licenta.Inventory\Licenta.Warehouse.csproj", "{2053C42A-4CB7-44E8-9310-20F0577231D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Review.API", "Licenta.Review.API\Licenta.Review.API.csproj", "{EFC5F017-55BC-44F1-8307-5E4F69D62F4F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Review.EntityFramework", "Licenta.Review.EntityFramework\Licenta.Review.EntityFramework.csproj", "{8D1C6005-9EE0-4B04-976D-CC29660BBFD7}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Licenta.Inventory.Database", "Licenta.Inventory.Database\Licenta.Inventory.Database.sqlproj", "{4242B977-E20F-45DE-8988-6A426BBC6D44}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Licenta.Warehouse.Database", "Licenta.Inventory.Database\Licenta.Warehouse.Database.sqlproj", "{4242B977-E20F-45DE-8988-6A426BBC6D44}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Licenta.Review.Database", "Licenta.Review.Database\Licenta.Review.Database.sqlproj", "{996C213F-5E54-4B12-973F-324A36F9E09C}"
 EndProject
@@ -52,6 +52,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Common", "_Common", "{8F73CE3F-ED50-4A46-A804-FCA2337302E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.EntityFramework", "Licenta.EntityFramework\Licenta.EntityFramework.csproj", "{E974378B-EC58-4A02-8C93-A0AAA78E1506}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{41B25986-75B4-495D-8700-861DDB3D2C9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Licenta.Order", "Licenta.Order\Licenta.Order.csproj", "{18FFFB3C-5ECC-4402-B342-13C89DD32227}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,6 +147,10 @@ Global
 		{E974378B-EC58-4A02-8C93-A0AAA78E1506}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E974378B-EC58-4A02-8C93-A0AAA78E1506}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E974378B-EC58-4A02-8C93-A0AAA78E1506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18FFFB3C-5ECC-4402-B342-13C89DD32227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18FFFB3C-5ECC-4402-B342-13C89DD32227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18FFFB3C-5ECC-4402-B342-13C89DD32227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18FFFB3C-5ECC-4402-B342-13C89DD32227}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,5 +173,6 @@ Global
 		{996C213F-5E54-4B12-973F-324A36F9E09C} = {4836A2DB-9766-4D1D-AE04-00EDAAAD6E3C}
 		{7AAA4A3A-4325-422F-B53F-7C2B0838507A} = {8F14F5D5-F43F-4981-8331-D8766A106AC4}
 		{E974378B-EC58-4A02-8C93-A0AAA78E1506} = {8F73CE3F-ED50-4A46-A804-FCA2337302E4}
+		{18FFFB3C-5ECC-4402-B342-13C89DD32227} = {41B25986-75B4-495D-8700-861DDB3D2C9C}
 	EndGlobalSection
 EndGlobal

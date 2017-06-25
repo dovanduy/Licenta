@@ -1,8 +1,8 @@
 ﻿using System.Web.Http;
+using ApiContracts.Dtos;
 using BusinessLogic.Services.Interfaces;
-using Contracts.ApiDtos;
 
-namespace LicentaHighLevelApi.Controllers
+namespace LicentaMonolithHighLevelApi.Controllers
 {
     [AllowAnonymous]
     [RoutePrefix("api/Review")]

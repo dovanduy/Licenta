@@ -6,7 +6,7 @@
     [Row_Version] INT NOT NULL DEFAULT 1, 
     [Date_Deleted] DATE NULL, 
     [Price] MONEY NOT NULL, 
-    [Inventory] INT NOT NULL DEFAULT 0, 
+    [ImageUrl] VARCHAR(500) NULL, 
     CONSTRAINT [FK_Product_Category] FOREIGN KEY ([CategoryId]) REFERENCES Category([Id])
 );
 

@@ -9,6 +9,7 @@ namespace Licenta.EntityFramework.UnitOfWork.Interfaces
         void Add(T entity);
         void Update(T entity);
         void Delete(object entityId);
+        void DeletePermamently(object entityId);
     }
 
     public interface IRepository

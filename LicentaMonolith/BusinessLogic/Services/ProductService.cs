@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using ApiContracts.Dtos;
 using BusinessLogic.Mappers;
 using BusinessLogic.Services.Interfaces;
-using Contracts.ApiDtos;
 using Contracts.DataAccess;
 using DataAccess;
 using Microsoft.Practices.ObjectBuilder2;
@@ -22,6 +22,16 @@ namespace BusinessLogic.Services
             _unitOfWork = unitOfWork;
             _repositoryProduct = unitOfWork.GetRepository<Product>();
             _repositoryAditionalDetails = unitOfWork.GetRepository<AditionalDetail>();
+        }
+
+        public IList<ProductDto> GetForList(int categoryId)
+        {
+            return _repositoryProduct.AllEntities().Where(x => x.CategoryId == categoryId).Select(ProductMapper.Map).ToList();
+        }
+
+        public ProductDto GetById(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddNewProduct(ProductDto product)
@@ -46,24 +56,6 @@ namespace BusinessLogic.Services
             _repositoryProduct.Update(ProductMapper.Map(product));
 
             _unitOfWork.SaveChanges();
-        }
-
-        public IList<Product> Get(Func<IQueryable<Product>, IQueryable<Product>> query = null)
-        {
-            if (query == null)
-            {
-                return _repositoryProduct.All().Include(x => x.AditionalDetails).ToList();
-            }
-            return query.Invoke(_repositoryProduct.All().Include(x => x.AditionalDetails)).ToList();
-        }
-
-        public IList<Product> GetWithoutAditionalDetails(Func<IQueryable<Product>, IQueryable<Product>> query = null)
-        {
-            if (query == null)
-            {
-                return _repositoryProduct.All().ToList();
-            }
-            return query.Invoke(_repositoryProduct.All()).ToList();
         }
     }
 }

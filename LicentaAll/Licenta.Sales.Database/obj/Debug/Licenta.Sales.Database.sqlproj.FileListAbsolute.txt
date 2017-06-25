@@ -1,9 +1,5 @@
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\bin\Debug\Licenta.Sales.Database.dacpac
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\bin\Debug\Licenta.Sales.Database.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\bin\Debug\Licenta.Sales.Database.pdb
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\obj\Debug\Model.xml
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\obj\Debug\refactor.xml
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\obj\Debug\postdeploy.sql
-C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\obj\Debug\predeploy.sql
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\obj\Debug\Licenta.Sales.Database.dll
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.Sales.Database\obj\Debug\Licenta.Sales.Database.pdb

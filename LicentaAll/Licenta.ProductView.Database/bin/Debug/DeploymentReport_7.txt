@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Rename
+       [dbo].[AditionalDetails].[Id] (Column)
+       [dbo].[Category].[Id] (Column)
+       [dbo].[Products].[Id] (Column)
+     Alter
+       [dbo].[AditionalDetails] (Table)
+       [dbo].[Category] (Table)
+       [dbo].[Products] (Table)
+       [dbo].[ProductView] (View)
+
+** Supporting actions

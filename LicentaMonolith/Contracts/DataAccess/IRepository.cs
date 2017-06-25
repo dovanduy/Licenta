@@ -5,7 +5,7 @@ namespace Contracts.DataAccess
     public interface IRepository<T> : IRepository where T:class,IMaintainableEntity 
     {
         T Get(object entityId);
-        IQueryable<T> All();
+        IQueryable<T> AllEntities();
         void Add(T entity);
         void Update(T entity);
         void Delete(object entityId);

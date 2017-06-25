@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Contracts.ApiDtos;
-using DataAccess;
+﻿using System.Collections.Generic;
+using ApiContracts.Dtos;
 
 namespace BusinessLogic.Services.Interfaces
 {
@@ -10,7 +7,7 @@ namespace BusinessLogic.Services.Interfaces
     {
         void AddNewReview(ReviewDto review);
         void DeleteReview(int reviewId);
-        IList<Review> Get(Func<IQueryable<Review>, IQueryable<Review>> query = null);
+        IList<ReviewDto> GetReviewsForProduct(int productId);
         void UpdateReview(ReviewDto review);
     }
 }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ApiContracts.Dtos;
 using BusinessLogic.Mappers;
 using BusinessLogic.Services.Interfaces;
-using Contracts.ApiDtos;
 using Contracts.DataAccess;
 using DataAccess;
 
@@ -30,7 +30,7 @@ namespace BusinessLogic.Services
 
         public void DeleteCategory(int categoryId)
         {
-            _repositoryProduct.All()
+            _repositoryProduct.AllEntities()
                 .Where(x => x.CategoryId == categoryId).ToList()
                 .ForEach(x => { x.CategoryId = 0; }); 
             _repository.Delete(categoryId);
@@ -43,13 +43,9 @@ namespace BusinessLogic.Services
             _unitOfWork.SaveChanges();
         }
 
-        public IList<Category> Get(Func<IQueryable<Category>, IQueryable<Category>> query = null)
+        public IList<CategoryDto> GetCategories()
         {
-            if (query == null)
-            {
-                return _repository.All().ToList();
-            }
-            return query.Invoke(_repository.All()).ToList();
+            return _repository.AllEntities().Select(CategoryMapper.Map).ToList();
         }
     }
 }

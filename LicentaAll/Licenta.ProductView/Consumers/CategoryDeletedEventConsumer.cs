@@ -6,45 +6,24 @@ using Licenta.ProductView.EntityFramework;
 using System.Linq;
 using System.Data.Entity.Core;
 using System.Collections.Generic;
+using Licenta.ProductView.Services.Interfaces;
 
 namespace Licenta.ProductView.Consumers
 {
     class CategoryDeletedEventConsumer : IConsumer<ICategoryDeletedEvent>
     {
-        public async Task Consume(ConsumeContext<ICategoryDeletedEvent> context)
+        private ICategoryService _categoryService;
+
+        public CategoryDeletedEventConsumer(ICategoryService categoryService)
         {
-            using (ProductViewDbContext unitOfWork = new ProductViewDbContext())
-            {
-                var idOfCategoryToBeDeleted = context.Message.CategoryId;
-
-                if (unitOfWork.Categories.Any(x => x.CategoryId == idOfCategoryToBeDeleted))
-                {
-                    Category editedCategory = unitOfWork.Categories.First(x => x.CategoryId == idOfCategoryToBeDeleted);
-                    string message = $"Category {editedCategory.CategoryId} : {editedCategory.Name} was deleted.";
-
-                    MoveProductsToUncategorized(unitOfWork, idOfCategoryToBeDeleted);
-
-                    unitOfWork.Categories.Remove(editedCategory);
-
-                    await unitOfWork.SaveChangesAsync();
-                    await Console.Out.WriteLineAsync(message);
-                }
-                else
-                {
-                    throw new EntityCommandExecutionException($"No category with id {idOfCategoryToBeDeleted}");
-                }
-            }
+            _categoryService = categoryService;
         }
 
-        private void MoveProductsToUncategorized(IProductViewDbContext unitOfWork, int idOfCategoryToBeDeleted)
+        public async Task Consume(ConsumeContext<ICategoryDeletedEvent> context)
         {
-            IList<Product> productsToMove = unitOfWork.Products.Where(x => x.CategoryId == idOfCategoryToBeDeleted).ToList();
-
-            foreach (Product p in productsToMove)
-            {
-                unitOfWork.Products.Attach(p);
-                p.CategoryId = 0;
-            }
+            var idOfCategoryToBeDeleted = context.Message.CategoryId;
+            await _categoryService.DeleteCategory(idOfCategoryToBeDeleted);
+            await Console.Out.WriteLineAsync($"Category {idOfCategoryToBeDeleted} was deleted.");
         }
     }
 }

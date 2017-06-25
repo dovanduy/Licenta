@@ -1,4 +1,4 @@
-﻿using Contracts.ApiDtos;
+﻿using ApiContracts.Dtos;
 using DataAccess;
 
 namespace BusinessLogic.Mappers

@@ -3,7 +3,7 @@ using Microsoft.Owin.Security.DataHandler.Encoder;
 using Microsoft.Owin.Security.Jwt;
 using Owin;
 
-namespace LicentaHighLevelApi.AppStart
+namespace LicentaMonolithHighLevelApi.AppStart
 {
     public class AuthZeroConfig
     {

@@ -34,3 +34,5 @@ C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debu
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\MassTransit.UnityIntegration.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Microsoft.Practices.Unity.Configuration.xml
 C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Licenta.EntityFramework.dll
+C:\Users\Stefan\Documents\GitHub\Licenta\LicentaAll\Licenta.ProductView\bin\Debug\Licenta.EntityFramework.pdb

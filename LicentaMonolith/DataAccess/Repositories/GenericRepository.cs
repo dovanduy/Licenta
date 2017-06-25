@@ -22,7 +22,7 @@ namespace DataAccess.Repositories
             _dbSet.Add(entity);
         }
 
-        public IQueryable<T> All()
+        public IQueryable<T> AllEntities()
         {
             return _dbSet.Where(x => !x.DateDeleted.HasValue).AsQueryable();
         }
@@ -41,7 +41,8 @@ namespace DataAccess.Repositories
         {
             var e = _dbSet.Find(entity.Id);
             if (e.RowVersion > entity.RowVersion)
-                throw new AppConcurencyException("Concurency exception");
+                throw
+                new AppConcurencyException("Concurency exception");
             _dbSet.Attach(entity);
             entity.RowVersion += 1;
         }

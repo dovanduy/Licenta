@@ -38,7 +38,8 @@ namespace Licenta.Products.Services
                 CategoryId = productToAdd.CategoryId,
                 Description = productToAdd.Description,
                 Name = productToAdd.Name,
-                AditionalDetails = aditionalDetails
+                AditionalDetails = aditionalDetails,
+                RowVersion = productToAdd.RowVersion
             };
 
             _repositoryProduct.Add(addedProduct);
@@ -77,6 +78,7 @@ namespace Licenta.Products.Services
             editedProduct.Name = productToEdit.Name;
             editedProduct.Description = productToEdit.Description;
             editedProduct.CategoryId = productToEdit.CategoryId;
+            editedProduct.RowVersion = productToEdit.RowVersion;
 
             aditionalDetailsToEdit.ForEach(x =>
             {
@@ -84,6 +86,7 @@ namespace Licenta.Products.Services
                 _repositoryAditionalDetails.Update(editedDetail);
                 editedDetail.Name = x.Name;
                 editedDetail.Text = x.Text;
+                editedDetail.RowVersion = x.RowVersion;
             });
 
             aditionalDetailsToAdd.ForEach(x =>
@@ -102,7 +105,8 @@ namespace Licenta.Products.Services
             {
                 Id = aditionalDetail.AditionalDetailId,
                 Name = aditionalDetail.Name,
-                Text = aditionalDetail.Text
+                Text = aditionalDetail.Text,
+                RowVersion = aditionalDetail.RowVersion
             };
         }
     }

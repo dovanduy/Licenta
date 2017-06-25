@@ -123,10 +123,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Licenta.EntityFramework\Licenta.EntityFramework.csproj">
+      <Project>{E974378B-EC58-4A02-8C93-A0AAA78E1506}</Project>
+      <Name>Licenta.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Licenta.ProductView.EntityFramework\Licenta.ProductView.EntityFramework.csproj">
       <Project>{77239c2a-089f-48e9-8e23-376b52b19a91}</Project>
       <Name>Licenta.ProductView.EntityFramework</Name>

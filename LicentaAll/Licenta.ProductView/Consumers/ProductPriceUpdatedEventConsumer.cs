@@ -5,32 +5,26 @@ using System;
 using System.Data.Entity.Core;
 using System.Linq;
 using System.Threading.Tasks;
+using Licenta.ProductView.Services.Interfaces;
 
 namespace Licenta.ProductView.Consumers
 {
     public class ProductPriceUpdatedEventConsumer : IConsumer<IProductPriceUpdatedEvent>
     {
+        private IProductService _productService;
+
+        public ProductPriceUpdatedEventConsumer(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         public async Task Consume(ConsumeContext<IProductPriceUpdatedEvent> context)
         {
-            using (ProductViewDbContext unitOfWork = new ProductViewDbContext())
-            {
-                var updatedProductId = context.Message.ProductId;
-                var updatedProductPrice = context.Message.Price;
+            var productId = context.Message.ProductId;
+            var updatedPrice = context.Message.Price;
 
-                if (unitOfWork.Products.Any(x => x.ProductId == updatedProductId))
-                {
-                    var productToUpdate = unitOfWork.Products.First(x => x.ProductId == updatedProductId);
-                    unitOfWork.Products.Attach(productToUpdate);
-                    productToUpdate.Price = updatedProductPrice;
-
-                    await unitOfWork.SaveChangesAsync();
-                    await Console.Out.WriteLineAsync($"Product {updatedProductId} price was changed.");
-                }
-                else
-                {
-                    throw new EntityCommandExecutionException($"No product with id {updatedProductId}");
-                }
-            }
+            var updatedProduct = _productService.UpdateProduct(productId, price: updatedPrice);
+            await Console.Out.WriteLineAsync($"Product {updatedProduct.Id} inventory was changed.");
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ApiContracts.Dtos;
 using BusinessLogic.Mappers;
 using BusinessLogic.Services.Interfaces;
 using Contracts.DataAccess;
 using DataAccess;
-using Contracts.ApiDtos;
 
 namespace BusinessLogic.Services
 {
@@ -22,7 +22,7 @@ namespace BusinessLogic.Services
 
         public void AddNewReview(ReviewDto review)
         {
-            if (!_repository.All().Any(x => x.UserId == review.UserId && x.ProductId == review.ProductId))
+            if (!_repository.AllEntities().Any(x => x.UserId == review.UserId && x.ProductId == review.ProductId))
             {
                 if (review.Rating < 0)
                     review.Rating = 0;
@@ -37,9 +37,18 @@ namespace BusinessLogic.Services
             }
         }
 
+        public IList<ReviewDto> GetReviewsForProduct(int productId)
+        {
+            if (_repository.AllEntities().Any(x => x.ProductId == productId))
+            {
+                return _repository.AllEntities().Where(x => x.ProductId == productId).Select(ReviewMapper.Map).ToList();
+            }
+            return new List<ReviewDto>();
+        }
+
         public void UpdateReview(ReviewDto review)
         {
-            if (_repository.All().Any(x => x.Id == review.ReviewId))
+            if (_repository.AllEntities().Any(x => x.Id == review.ReviewId))
             {
                 if (review.Rating < 0)
                     review.Rating = 0;
@@ -58,15 +67,6 @@ namespace BusinessLogic.Services
         {
             _repository.Delete(reviewId);
             _unitOfWork.SaveChanges();
-        }
-
-        public IList<Review> Get(Func<IQueryable<Review>, IQueryable<Review>> query = null)
-        {
-            if (query == null)
-            {
-                return _repository.All().ToList();
-            }
-            return query.Invoke(_repository.All()).ToList();
         }
     }
 }

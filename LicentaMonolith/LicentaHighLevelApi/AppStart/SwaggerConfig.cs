@@ -1,7 +1,7 @@
 using System.Web.Http;
 using Swashbuckle.Application;
 
-namespace LicentaHighLevelApi.AppStart
+namespace LicentaMonolithHighLevelApi.AppStart
 {
     public class SwaggerConfig
     {
@@ -26,7 +26,7 @@ namespace LicentaHighLevelApi.AppStart
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "LicentaHighLevelApi");
+                        c.SingleApiVersion("v1", "LicentaMonolithHighLevelApi");
 
                         // If your API has multiple versions, use "MultipleApiVersions" instead of "SingleApiVersion".
                         // In this case, you must provide a lambda that tells Swashbuckle which actions should be
@@ -239,7 +239,7 @@ namespace LicentaHighLevelApi.AppStart
 
         private static string GetRootUrlFromAppConfig()
         {
-            return "http://localhost/LicentaHighLevelApi/";
+            return "http://localhost/LicentaMonolithHighLevelApi/";
         }
     }
 }

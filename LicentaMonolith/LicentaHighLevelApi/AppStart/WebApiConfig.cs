@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
 
-namespace LicentaHighLevelApi.AppStart
+namespace LicentaMonolithHighLevelApi.AppStart
 {
     public class WebApiConfig
     {

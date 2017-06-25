@@ -31,6 +31,11 @@ namespace Licenta.EntityFramework.UnitOfWork
             _dbSet.Find(entityId).DateDeleted = DateTime.Now;
         }
 
+        public void DeletePermamently(object entityId)
+        {
+            _dbSet.Remove(_dbSet.Find(entityId));
+        }
+
         public T Get(object entityId)
         {
             return _dbSet.Find(entityId);

@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
-using BusinessLogic.Mappers;
+using ApiContracts.Dtos;
 using BusinessLogic.Services.Interfaces;
-using Contracts.ApiDtos;
 
-namespace LicentaHighLevelApi.Controllers
+namespace LicentaMonolithHighLevelApi.Controllers
 {
-    [AllowAnonymous]
     [RoutePrefix("api/Product")]
     public class ProductController : ApiController
     {
@@ -18,22 +15,22 @@ namespace LicentaHighLevelApi.Controllers
             _productService = productService;
         }
 
-        public IList<ProductDto> Get()
+        [AllowAnonymous]
+        [Route("Category/{categoryId}")]
+        public IList<ProductDto> Get(int categoryId)
         {
-            return _productService.GetWithoutAditionalDetails().Select(ProductMapper.MapWithAditionalDetails).ToList();
+            return _productService.GetForList(categoryId);
         }
 
+        [AllowAnonymous]
         public ProductDto GetById(int id)
         {
-            return  _productService
-                .Get(x => x.Where(y => y.Id == id))
-                .Select(ProductMapper.MapWithAditionalDetails)
-                .First();
+            return _productService.GetById(id);
         }
 
         public IHttpActionResult Post(ProductDto product)
         {
-             _productService.AddNewProduct(product);
+            _productService.AddNewProduct(product);
             return Ok();
         }
 

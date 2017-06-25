@@ -124,6 +124,7 @@
     <Build Include="dbo\Tables\Reaction.sql" />
     <Build Include="dbo\Tables\Sale.sql" />
     <Build Include="dbo\Tables\SaleStatusLookup.sql" />
+    <Build Include="dbo\Tables\Inventory.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database.publish.xml" />

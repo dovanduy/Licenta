@@ -1,19 +1,26 @@
 ﻿<div class="col-xl-2 col-lg-3 col-xs-12">
-  <h3 class="col-xs-12 col-centered hidden-sm hidden-xs">Categories:</h3>
-  <ul name="categories" class="nav nav-pills nav-stacked hidden-xs hidden-md hidden-sm">
-    <li><a>Category 1</a></li>
-    <li><a>Category 2</a></li>
-    <li><a>Category 3</a></li>
-    <li><a>Category 4</a></li>
-    <li><a>Category 5</a></li>
-    <li><a>Category 6</a></li>
-    <li><a>Category 7</a></li>
-  </ul>
+  <h3 id="category-title-mobile" class="col-xs-12 col-centered visible-xs visible-md visible-sm hidden-lg" (click)="clickToMock()">Categories:</h3>
+  <div class="product-form-container hidden-sm hidden-xs hidden-md">
+    <h3 id="category-title" class="col-xs-12 col-centered" (click)="clickToMock()">Categories:</h3>
+
+    <ul name="categories" class="nav nav-pills nav-stacked">
+      <li><a>Uncategorized</a></li>
+      <li><a>Clothes</a></li>
+      <li><a>Furniture</a></li>
+      <li><a>Electronics</a></li>
+      <li><a>Boardgames</a></li>
+      <li><a>Skateboards</a></li>
+      <li><a>Bicycles</a></li>
+    </ul>
+  </div>
   <select name="categories" class="visible-md visible-sm visible-xs form-control">
-    <option value="volvo">Category 1</option>
-    <option value="saab">Category 2</option>
-    <option value="fiat">Category 3</option>
-    <option value="audi">Category 4</option>
+    <option value="volvo">Uncategorized</option>
+    <option value="saab">Clothes</option>
+    <option value="fiat">Furniture</option>
+    <option value="audi">Electronics</option>
+    <option value="audi">Boardgames</option>
+    <option value="audi">Skateboards</option>
+    <option value="audi">Bicycles</option>
   </select>
 </div>
 
@@ -22,15 +29,7 @@
     <h3 class="col-md-6 col-xs-12 hidden-sm hidden-xs">Products in<br/> {{SelectedCategoryName}}:</h3>
     <input class="form-control product-search-input col-md-6 col-xs-12" type="text" id="searchInput" placeholder="Search category..."/>
   </div>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
-  <product-card Price="3" Name="ProductName" Description="The most beautiful apple ever." Image="http://i.imgur.com/oj49oVj.jpg" Rating="5" InStock="true"></product-card>
+
+  <product-card *ngFor="let product of this.productsInCategory();let i = index" [Price]="product.price" [Name]="product.name" [Description]="product.description" [Image]="product.imageSrc" [Rating]="product.rating" [InStock]="product.instock"></product-card>
 </div>
 

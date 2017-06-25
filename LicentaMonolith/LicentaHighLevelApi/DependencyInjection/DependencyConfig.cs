@@ -2,7 +2,7 @@
 using BusinessLogic;
 using Microsoft.Practices.Unity;
 
-namespace LicentaHighLevelApi.DependencyInjection
+namespace LicentaMonolithHighLevelApi.DependencyInjection
 {
     public class DependencyConfig
     {
@@ -10,7 +10,7 @@ namespace LicentaHighLevelApi.DependencyInjection
         {
             var container = new UnityContainer();
 
-            ApplicationContainerConfiguration.Register(container);
+            container.AddNewExtension<DependencyInjectionExtention>();
 
             config.DependencyResolver = new UnityResolver(container);
         }

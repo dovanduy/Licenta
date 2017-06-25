@@ -104,13 +104,22 @@
     <Compile Include="Consumers\ProductRatingUpdatedEventConsumer.cs" />
     <Compile Include="Consumers\ProductUpdatedEventConsumer.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\Interfaces\ICategoryService.cs" />
+    <Compile Include="Services\Interfaces\IProductService.cs" />
+    <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Licenta.EntityFramework\Licenta.EntityFramework.csproj">
+      <Project>{E974378B-EC58-4A02-8C93-A0AAA78E1506}</Project>
+      <Name>Licenta.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Licenta.Messaging\Licenta.Messaging.csproj">
       <Project>{81967d1c-97a5-441a-bc94-c669a05c1aa8}</Project>
       <Name>Licenta.Messaging</Name>
@@ -120,9 +129,7 @@
       <Name>Licenta.ProductView.EntityFramework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

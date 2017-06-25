@@ -25,10 +25,14 @@ export class SlideshowComponent implements AfterViewInit {
       //  imgSrc: 'http://www.ncl.ac.uk/media/wwwnclacuk/undergraduate/images/courseprofiles/Countryside-Management-BSc-D455-crop.jpg',
       //  state: 'NotDisplayed'
       //},
+      //{
+      //  imgSrc: 'http://hhfinance.nl/wp-content/uploads/Geheimen-achter-succes-echte-ondernemers.jpg',
+      //  state: 'Displayed'
+      //},
       {
-        imgSrc: 'http://hhfinance.nl/wp-content/uploads/Geheimen-achter-succes-echte-ondernemers.jpg',
+        imgSrc: 'https://www.best2wheelelectricscooter.com/wp-content/uploads/2016/10/about.jpg',
         state: 'Displayed'
-      },
+      }
     ];
     setInterval(() => {
       this.nextSlide();

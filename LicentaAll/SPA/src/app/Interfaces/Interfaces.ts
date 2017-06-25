@@ -20,6 +20,7 @@ export interface IProduct extends IMaintainableEntity {
   id: number;
   rating: number;
   total?: number;
+  cateogoryId: number;
 }
 
 export interface IReview extends IMaintainableEntity {

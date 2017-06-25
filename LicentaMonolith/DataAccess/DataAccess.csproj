@@ -70,12 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationContainerConfiguration.cs" />
     <Compile Include="Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="DependencyInjectionExtention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\RepositoryCacheProvider.cs" />
@@ -103,9 +103,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Contracts\Contracts.csproj">
+    <ProjectReference Include="..\Contracts\DalContracts.csproj">
       <Project>{77d06a64-bd57-4f67-ae56-f788ff2656cd}</Project>
-      <Name>Contracts</Name>
+      <Name>DalContracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
